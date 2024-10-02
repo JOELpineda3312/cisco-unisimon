@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tienda   
+ Cisco - Productos</title>
+    <style>
+        /* Base styles for responsiveness */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #1e73be;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;  /* Center the header horizontally */
+            max-width: 90%;   /* Set a maximum width for larger screens */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.5em; /* Adjust font size for responsiveness */
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding:   
+ 2px 8px;
+        }
+
+        /* Container styles */
+        .container {
+            width: 90%; /* Set a responsive width */
+            margin: 20px auto; /* Add margin for better layout */
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+        }
+
+        /* Products section styles */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px; /* Add gap between products for spacing */
+        }
+
+        .product {
+            width: calc(33% - 20px); /* Responsive width based on flexbox */
+            border: 5px solid #ddd;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 90%;
+            height: auto; /* Maintain aspect ratio of images */
+            width: 300px;
+            height: 340px;
+            object-fit: contain;
+        }
+
+        .product p {
+            margin: 10px 0;
+        }
+
+        .product-price {
+            font-size: 1em;
+            color: #28a745;
+        }
+
+        .product-iva {
+            font-size: 0.8em;
+            color: #555;
+        }
+
+        .add-to-cart {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: center;
+            align-items: center;
+            justify-content: center;
+        }
+        .add-to-cart:hover {
+            background-color: #218838;
+        }
+        .cart {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 400px;
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            z-index: 1000;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .cart-item button {
+            background-color: #ff4b5c;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart-item button:hover {
+            background-color: #d43f4c;
+        }
+        .cart-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-footer button {
+            background-color: #1e73be;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart-footer button:hover {
+            background-color: #165a8b;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1e73be;
+            color: #fff;
+            margin-top: 20px;
+            margin-left: 20px;
+            max-width: 1270px;
+        }
+        /* Agrega estas media queries al final de tu estilo existente */
+@media (max-width: 768px) {
+    .product {
+        width: calc(50% - 20px); /* Dos productos por fila en tabletas */
+    }
+
+    header h1 {
+        font-size: 1.5em; /* Ajusta el tamaño de fuente */
+    }
+
+    .nav {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        align-items: flex-start; /* Alinea a la izquierda */
+    }
+
+    .nav a {
+        font-size: 0.9em; /* Reduce el tamaño de fuente */
+    }
+
+    .cart {
+        width: 90%; /* Ajusta el ancho del carrito */
+        right: 5%; /* Centra el carrito */
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        width: 100%; /* Un solo producto por fila en móviles */
+    }
+
+    header h1 {
+        font-size: 1.2em; /* Reduce aún más el tamaño de fuente */
+    }
+
+    .add-to-cart {
+        width: 100%; /* Botones de añadir al carrito ocupan el ancho completo */
+    }
+
+    footer {
+        font-size: 0.8em; /* Reduce el tamaño de fuente en el pie de página */
+    }
+}
+
+/* Estilo de la ventana modal */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    border-radius: 12px;
+    padding: 20px;
+    width: 50%;
+    max-height: 80%;
+    overflow-y: auto; /* Desplazamiento vertical */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    border: 2px solid #4CAF50; /* Borde verde */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Estilo de la tabla */
+.table-responsive {
+    overflow-x: auto; /* Para permitir desplazamiento horizontal si es necesario */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px; /* Mayor espacio en celdas */
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4072bd; /* Color de encabezado */
+    color: white;
+    text-transform: uppercase; /* Mayúsculas en encabezados */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Color al pasar el ratón por encima */
+}
+
+/* Estilo de los inputs y el botón */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s; /* Transición en el borde */
+}
+
+input:focus, select:focus {
+    border-color: #4CAF50; /* Borde verde al enfocar */
+}
+
+button {
+    background-color: #4CAF50; /* Color del botón */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transición en el fondo */
+}
+
+button:hover {
+    background-color: #45a049; /* Color del botón al pasar el ratón */
+}
+
+/* Estilos adicionales para mejorar el diseño */
+h3, h4 {
+    color: #333; /* Color de encabezados */
+    margin-bottom: 10px;
+}
+
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header>
+    <h1>Tienda Cisco</h1>
+    <div class="nav">
+        <a href="index.html" id="product-link">Página Principal</a>
+        <a href="login.html"><i class="fas fa-user"></i> Acceder</a>
+        <a href="#" class="cart-icon" id="cart-icon">
+            <img src="../Desktop/carro.png" alt="Carrito" width="30">
+            <span class="cart-count" id="cart-count">0</span>
+        </a>
+    </div>
+</header>
+
+<div class="container">
+    <h2>Productos Disponibles</h2>
+    <div class="products" id="product-list">
+        <!-- Lista completa de 20 productos de Cisco -->
+        <div class="product">
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTdE2mkoMYrEjrUje4001eGcGKiHU8MbYyRZX9uurMNOiP3IYn6oSZmhZ6Z--8ob2_SNWvLUy1gM1kxq1Pfzsqr0L25O2cnlakoP_-Fl7c&usqp=CAE" alt="Cisco Router 2901" width="600" height="340">
+            <h4>Cisco Router 2901</h4>
+            <p>Router de alto rendimiento para pequeñas empresas.</p>
+            <p class="product-price">Precio: $200,000</p>
+            <p class="product-iva">+ IVA (19%): $38,000</p>
+            <button class="add-to-cart" onclick="addToCart('Cisco Router 2901', 200000, 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTdE2mkoMYrEjrUje4001eGcGKiHU8MbYyRZX9uurMNOiP3IYn6oSZmhZ6Z--8ob2_SNWvLUy1gM1kxq1Pfzsqr0L25O2cnlakoP_-Fl7c&usqp=CAE')">Añadir al carrito</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSBBIzxvF7da_0RjMdrdFPZITJ_GxjygEKonJ6Zm5KYp6EtnuCbIpbFQ3Iz_eHxxLZliserjRTZ1Wwk4M2iisHagKhlcLNBXGtlV9hyGaIXv54klXSrcfQKpQ&usqp=CAE" alt="Rastreador RJ45 - RJ11" width="600" height="340">
+            <h4>Rastreador RJ45 - RJ11</h4>
+            <p>Rastreador De Cables Rj45 Y Rj11 UNI-T UT682, Redes</p>
+            <p class="product-price">Precio: $150,000</p>
+            <p class="product-iva">+ IVA (19%): $28,500</p>
+            <button class="add-to-cart" onclick="addToCart('Rastreador RJ45 - RJ11', 150000, 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSBBIzxvF7da_0RjMdrdFPZITJ_GxjygEKonJ6Zm5KYp6EtnuCbIpbFQ3Iz_eHxxLZliserjRTZ1Wwk4M2iisHagKhlcLNBXGtlV9hyGaIXv54klXSrcfQKpQ&usqp=CAE')">Añadir al carrito</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR19IffAdncToDRhj2G9Qagnfwt6Jzu0LPrE3DF5EBqMiC2niuUu_0MZ4mNJBiTKUIoMh8I3hEZS_rIVUaQyERDjZYr2Vmu&usqp=CAE" alt="Cisco Meraki MX64" width="600" height="340">
+            <h4>Probador de Red tester Rj45 Rj11</h4>
+            <p>Probador de Red tester Rj45 Rj11Herramienta indispensable para probar y diagnosticar el estado de cables de red con conectores RJ45 y cable telefónico con conectores RJ11</p>
+            <p class="product-price">Precio: $75,000</p>
+            <p class="product-iva">+ IVA (19%): $14,250</p>
+            <button class="add-to-cart" onclick="addToCart('Probador de Red tester Rj45 Rj11', 75000, 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR19IffAdncToDRhj2G9Qagnfwt6Jzu0LPrE3DF5EBqMiC2niuUu_0MZ4mNJBiTKUIoMh8I3hEZS_rIVUaQyERDjZYr2Vmu&usqp=CAE')">Añadir al carrito</button>
+        </div>
+        <div class="product">
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQihyToakgRDf-oSsz1hQ1m6MKGkWgmdHtjb-HHk5aqrGG5gtzGm4IP6eYJP1jmcjnEkJ5VK53q1Ro5sLv1TVObA80PXTKnRw03NLcxlFslkRZzZ4g_4s6Bzg&usqp=CAE" alt="Kit De Herramientas De Red De Crimpado Cat5/cat6" width="600" height="340">
+            <h4>Kit De Herramientas De Red De Crimpado Cat5/cat6</h4>
+            <p>Gran Kit de herramientas para Redes y Comunicaciones completo, acero inxodable, manillares de repuesto y gran cantidad de conectores y protectores.</p>
+            <p class="product-price">Precio: $201,000</p>
+            <p class="product-iva">+ IVA (19%): $38,190</p>
+            <button class="add-to-cart" onclick="addToCart('Kit De Herramientas De Red De Crimpado Cat5/cat6', 201000, 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQihyToakgRDf-oSsz1hQ1m6MKGkWgmdHtjb-HHk5aqrGG5gtzGm4IP6eYJP1jmcjnEkJ5VK53q1Ro5sLv1TVObA80PXTKnRw03NLcxlFslkRZzZ4g_4s6Bzg&usqp=CAE')">Añadir al carrito</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQNxCsLTFrQkYr6FUbV3nZHH7jcHZaYHJybG0en6XVxHjIhO3-JowRxunzhsFwJGDbbjrHWpz8mPkWC2NlEw49p1PRCj0pyoTwM4POIoEWDOEYV8gm7NdKE&usqp=CAE" alt="Adaptador Ethernet LAN RJ45 Original STARLINK V2" width="600" height="340">
+            <h4>Adaptador Ethernet LAN RJ45 Original STARLINK V2</h4>
+            <p>Adaptador Ethernet original de Starlink permite conexiones por cable, ofreciendo una red más estable y rápida. Este dispositivo se conecta directamente al router Starlink</p>
+            <p class="product-price">Precio: $150,000</p>
+            <p class="product-iva">+ IVA (19%): $28,500</p>
+            <button class="add-to-cart" onclick="addToCart('Adaptador Ethernet LAN RJ45 Original STARLINK V2', 150000, 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQNxCsLTFrQkYr6FUbV3nZHH7jcHZaYHJybG0en6XVxHjIhO3-JowRxunzhsFwJGDbbjrHWpz8mPkWC2NlEw49p1PRCj0pyoTwM4POIoEWDOEYV8gm7NdKE&usqp=CAE')">Añadir al carrito</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcT-07Zyb5mGMrNpsckhWIQ-srrZ4O0eR5JTsAuSevym34NVBKNMeohS1BVhF_eD9lMQkZfHffJ-PPwQ1G0-Xa2oewgdOFDBSf6CWKe9JF6opvcBnf2160m4&usqp=CAE" alt="Router Vpn Tp- Link Tl-Er604W De Banda Ancha Gigabit Inal" width="600" height="340">
+            <h4>Router Vpn Tp- Link Tl-Er604W De Banda Ancha Gigabit Inal</h4>
+            <p>ROUTER VPN DE BANDA ANCHA GIGABIT INALÁMBRICO N SAFESTREAM TL-ER604W 1 puerto WAN Gigabit, 3 puertos LAN Gigabit y 1 puerto WAN/LAN Gigabit Soporta los protocolos VPN IPsec</p>
+            <p class="product-price">Precio: $300,000</p>
+            <p class="product-iva">+ IVA (19%): $57,000</p>
+            <button class="add-to-cart" onclick="addToCart('Router Vpn Tp- Link Tl-Er604W De Banda Ancha Gigabit Inal', 300000, 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcT-07Zyb5mGMrNpsckhWIQ-srrZ4O0eR5JTsAuSevym34NVBKNMeohS1BVhF_eD9lMQkZfHffJ-PPwQ1G0-Xa2oewgdOFDBSf6CWKe9JF6opvcBnf2160m4&usqp=CAE')">Añadir al carrito</button>
+        </div>
+        <div class="product">
+            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQNHJfQB0ELpz9Mz7XJhLPPC7trEU_DKNJziM5UV4_fAhhoFowV4SJnPsbJ4jyq8P-9H0I7OiObnN0nwLpLBCWzD0ab77zvF07jN4dWhms&usqp=CAE" alt="Cisco ATA 192 Adaptador de teléfono analógico multiplataforma" width="600" height="340">
+            <h4>Cisco ATA 192 Adaptador de teléfono analógico multiplataforma</h4>
+            <p>El adaptador de teléfono analógico multiplataforma Cisco ATA 192 convierte el teléfono, la máquina de fax y los dispositivos de comunicaciones de paginación aérea</p>
+            <p class="product-price">Precio: $200,000</p>
+            <p class="product-iva">+ IVA (19%): <span id="iva-amount"></span></p>
+            <button class="add-to-cart" onclick="addToCart('Cisco ATA 192 Adaptador de teléfono analógico multiplataforma', 200000, 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQNHJfQB0ELpz9Mz7XJhLPPC7trEU_DKNJziM5UV4_fAhhoFowV4SJnPsbJ4jyq8P-9H0I7OiObnN0nwLpLBCWzD0ab77zvF07jN4dWhms&usqp=CAE')">Añadir al carrito</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQdZjkxpJ0Y2fRgFY1KYlim5jWGyX4TLQfEtb9V4uvMMkR-hR1-VWYl0uP2A8DLxPP2xTXwbD0pg2SmlWHQAhwIX4qK-m8u60RXsZ6de-6w&usqp=CAE" alt="Iwil Panel De Conexiones De 10 Gbps De 24 Puertos, Rj45" width="600" height="340">
+            <h4>Iwil Panel De Conexiones De 10 Gbps De 24 Puertos, Rj45</h4>
+            <p>Terminación sin herramientas El panel de conexión de paso Cat6 viene con acopladores que facilitan la conexión de los cables sin ningún tipo de perforación. Simplemente conecte</p>
+            <p class="product-price">Precio: $150,000</p>
+            <p class="product-iva">+ IVA (19%): <span class="iva-amount"></span></p>
+            <button class="add-to-cart" onclick="addToCart('Iwil Panel De Conexiones De 10 Gbps De 24 Puertos, Rj45', 150000, 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQdZjkxpJ0Y2fRgFY1KYlim5jWGyX4TLQfEtb9V4uvMMkR-hR1-VWYl0uP2A8DLxPP2xTXwbD0pg2SmlWHQAhwIX4qK-m8u60RXsZ6de-6w&usqp=CAE')">Añadir al carrito</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQVy1PMqNDmZ2QGuENv_fG3Qdt7mInvo0ICpYxHPfIUUa6jxEwYYMlpKmBFNE1OWnJm2eLul79KsaE78Um4m8n_y_rvvYWtS-a-a7WWifVtTrJziW3Y6v0umQ&usqp=CAE" alt="Accesorios Redes KIT DE IDENTIFICADORES RJ45">
+            <h4>Accesorios Redes KIT DE IDENTIFICADORES RJ45</h4>
+            <p>Kit de identificadores RJ45 para unidades VDV II y PoE Pro (juego de 24).</p>
+            <p class="product-price">Precio: $30,000</p>
+            <p class="product-iva">+ IVA (19%): <span id="iva-amount"></span></p>
+            <button class="add-to-cart" onclick="addToCart('Accesorios Redes KIT DE IDENTIFICADORES RJ45', 30000, 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQVy1PMqNDmZ2QGuENv_fG3Qdt7mInvo0ICpYxHPfIUUa6jxEwYYMlpKmBFNE1OWnJm2eLul79KsaE78Um4m8n_y_rvvYWtS-a-a7WWifVtTrJziW3Y6v0umQ&usqp=CAE')">Añadir al carrito</button>
+        </div>
+
+    </div>
+</div>
+
+<div class="cart" id="cart">
+    <div class="cart-header">
+        <h3>Carrito de Compras</h3>
+        <button onclick="toggleCart()">Cerrar</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f4f4f9;">
+                    <th style="text-align: center; padding: 8px; border: 1px solid #ddd;">Imagen</th>
+                    <th style="text-align: center; padding: 8px; border: 1px solid #ddd;">Producto</th>
+                    <th style="text-align: center; padding: 8px; border: 1px solid #ddd;">Cantidad</th>
+                    <th style="text-align: center; padding: 8px; border: 1px solid #ddd;">Precio Unitario</th>
+                    <th style="text-align: center; padding: 8px; border: 1px solid #ddd;">IVA (19%)</th>
+                    <th style="text-align: center; padding: 8px; border: 1px solid #ddd;">Precio Final</th>
+                    <th style="text-align: center; padding: 8px; border: 1px solid #ddd;">Acción</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items-body"></tbody>
+        </table>
+    </div>
+
+
+<!-- Ventana flotante del formulario de pago -->
+<div id="payment-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>Confirma tu compra</h3>
+
+        <!-- Información de los productos en el carrito -->
+        <div id="cart-items-summary">
+            <h4>Resumen de tu Carrito</h4>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-summary-body">
+                        <!-- Aquí se generarán dinámicamente los productos del carrito -->
+                    </tbody>
+                </table>
+            </div>
+            <p><strong>Total a pagar: $<span id="total-to-pay"></span></strong></p>
+        </div>
+
+        <!-- Formulario para los datos del usuario y método de pago -->
+        <form id="payment-form">
+            <h4>Información del Comprador</h4>
+            <label for="tipo-documento">Tipo de Documento:</label><br>
+            <select id="tipo-documento" name="tipo-documento" required>
+                <option value="">Seleccione</option>
+                <option value="cc">Cédula de Ciudadanía</option>
+                <option value="nit">NIT</option>
+                <option value="ce">Cédula de Extranjera</option>
+                <option value="pasaporte">Pasaporte</option>
+            </select><br><br>
+
+            <label for="numero-documento">Número de Documento:</label><br>
+            <input type="text" id="numero-documento" name="numero-documento" required><br><br>
+
+            <label for="nombre">Nombre Completo:</label><br>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+
+            <label for="correo">Correo Electrónico:</label><br>
+            <input type="email" id="correo" name="correo" required><br><br>
+
+            <label for="telefono">Teléfono:</label><br>
+            <input type="tel" id="telefono" name="telefono" required><br><br>
+
+            <h4>Método de Pago</h4>
+            <label for="metodo-pago">Seleccione su método de pago:</label><br>
+            <select id="metodo-pago" name="metodo-pago" required>
+                <option value="">Seleccione</option>
+                <option value="pse">PSE</option>
+                <option value="eypago">Eypago</option>
+                <option value="pagofacil">Pago Fácil</option>
+            </select><br><br>
+
+            <h4>Información de la Empresa</h4>
+            <p><strong>System's Play</strong></p>
+            <p>NIT: 1192757557-8</p>
+            <p>Tel: +57 3133118664</p>
+            <p>Email: sistemasintegradosplays3312@hotmail.com</p>
+            <p>Dirección: Av 10 k 22 - 43 Cerro Norte, Cúcuta, Colombia</p>
+            <p>Régimen: SAS</p>
+
+            <button type="submit">Confirmar Pago</button>
+        </form>
+    </div>
+</div>
+
+
+    <div class="cart-footer">
+        <strong>Total: $<span id="cart-total">0</span></strong>
+        <button onclick="mostrarModalPago()">Pagar</button>
+
+    </div>
+</div>
+
+<footer>
+    <p>Creado por tu nombre &copy; 2024</p>
+</footer>
+
+<script>
+    // Definir el precio del producto
+    const precioProducto = 30000; // Aquí defines el valor del producto
+
+    // Función para calcular el IVA
+    function calcularIVA(precio, porcentajeIVA) {
+        return precio * (porcentajeIVA / 100);
+    }
+
+    // Actualizar los valores de IVA
+    function actualizarIVA() {
+        const porcentajeIVA = 19; // IVA del 19%
+        const valorIVA = calcularIVA(precioProducto, porcentajeIVA);
+
+        // Actualizar el DOM con los valores calculados
+        document.getElementById('iva-amount').textContent = valorIVA.toLocaleString(); // Mostrar el IVA
+    }
+
+    // Llamar a la función para actualizar los precios cuando cargue la página
+    actualizarIVA();
+
+    // Carrito de compras
+    let cart = [];
+
+    // Función para agregar productos al carrito
+    function addToCart(name, price, img) {
+        const product = { name, price: price, quantity: 1, img }; // Se almacena el precio original
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+            existing.quantity++;
+            existing.price += price; // Acumula el precio total al existir más de un producto
+        } else {
+            cart.push(product);
+        }
+        updateCartCount();
+        renderCart();
+    }
+
+    // Actualiza el contador de productos en el carrito
+    function updateCartCount() {
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        document.getElementById('cart-count').textContent = count;
+    }
+
+    // Renderiza los productos en el carrito
+    function renderCart() {
+        const cartItemsBody = document.getElementById('cart-items-body');
+        cartItemsBody.innerHTML = ''; // Limpiar la tabla
+        let grandTotal = 0; // Para calcular el total general
+
+        cart.forEach(item => {
+            const priceWithoutTax = item.price / item.quantity; // Precio unitario sin IVA
+            const iva = priceWithoutTax * 0.19; // Calcula el IVA del 19%
+            const totalPrice = priceWithoutTax + iva; // Precio final con IVA
+
+            cartItemsBody.innerHTML += `
+                <tr>
+                    <td style="text-align: center; padding: 8px; border: 1px solid #ddd;">
+                        <img src="${item.img}" alt="${item.name}" style="width: 50px; height: 50px;">
+                    </td>
+                    <td style="text-align: center; padding: 8px; border: 1px solid #ddd;">${item.name}</td>
+                    <td style="text-align: center; padding: 8px; border: 1px solid #ddd;">${item.quantity}</td>
+                    <td style="text-align: center; padding: 8px; border: 1px solid #ddd;">$${formatPrice(priceWithoutTax)}</td>
+                    <td style="text-align: center; padding: 8px; border: 1px solid #ddd;">$${formatPrice(iva)}</td>
+                    <td style="text-align: center; padding: 8px; border: 1px solid #ddd;">$${formatPrice(totalPrice * item.quantity)}</td>
+                    <td style="text-align: center; padding: 8px; border: 1px solid #ddd;">
+                        <button onclick="removeFromCart('${item.name}')">Eliminar</button>
+                    </td>
+                </tr>
+            `;
+            grandTotal += totalPrice * item.quantity; // Sumar al total general
+        });
+        document.getElementById('cart-total').textContent = formatPrice(grandTotal); // Mostrar el total
+    }
+
+    // Función para formatear los precios sin decimales y con puntos
+    function formatPrice(price) {
+        return price.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    // Eliminar producto del carrito
+    function removeFromCart(name) {
+        cart = cart.filter(item => item.name !== name);
+        updateCartCount();
+        renderCart();
+    }
+
+    // Alternar la visibilidad del carrito
+    function toggleCart() {
+        const cartElement = document.getElementById('cart');
+        cartElement.style.display = cartElement.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Redirigir a la página de pago
+    function pagar() {
+        window.location.href = "pago.html";
+    }
+
+    // Escucha para abrir/cerrar el carrito
+    document.getElementById('cart-icon').addEventListener('click', toggleCart);
+ // Variables globales
+ let totalCart = 0;
+
+// Función para mostrar el modal de pago
+function mostrarModalPago() {
+    document.getElementById('payment-modal').style.display = 'flex'; // Mostrar modal
+    renderCartSummary(); // Mostrar resumen del carrito dentro del modal
+}
+
+// Función para cerrar el modal
+function closeModal() {
+    document.getElementById('payment-modal').style.display = 'none';
+}
+
+// Función para renderizar los productos del carrito en el modal
+function renderCartSummary() {
+    const cartItemsBody = document.getElementById('cart-summary-body');
+    cartItemsBody.innerHTML = ''; // Limpiar tabla
+
+    totalCart = 0; // Reiniciar total del carrito
+
+    cart.forEach(item => {
+        const iva = item.price * 0.19;
+        const totalPrice = item.price + iva;
+        totalCart += totalPrice * item.quantity;
+
+        cartItemsBody.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.quantity}</td>
+                <td>$${formatPrice(item.price)}</td>
+                <td>$${formatPrice(totalPrice)}</td>
+            </tr>
+        `;
+    });
+
+    document.getElementById('total-to-pay').textContent = formatPrice(totalCart);
+}
+
+ // Función para mostrar el modal de pago
+ function mostrarModalPago() {
+        document.getElementById('payment-modal').style.display = 'flex';
+        renderCartSummary(); // Mostrar resumen del carrito dentro del modal
+    }
+
+    // Función para cerrar el modal
+    function closeModal() {
+        document.getElementById('payment-modal').style.display = 'none';
+    }
+
+    // Función para renderizar los productos del carrito en el modal
+    function renderCartSummary() {
+        const cartItemsBody = document.getElementById('cart-summary-body');
+        cartItemsBody.innerHTML = '';
+        let totalCart = 0;
+
+        cart.forEach(item => {
+            const iva = item.price * 0.19;
+            const totalPrice = item.price + iva;
+            totalCart += totalPrice * item.quantity;
+
+            cartItemsBody.innerHTML += `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>$${formatPrice(item.price)}</td>
+                    <td>$${formatPrice(totalPrice)}</td>
+                </tr>
+            `;
+        });
+
+        document.getElementById('total-to-pay').textContent = formatPrice(totalCart);
+    }
+
+    // Función para confirmar el pago al enviar el formulario
+    document.getElementById('payment-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const nombre = document.getElementById('nombre').value;
+        const correo = document.getElementById('correo').value;
+        const telefono = document.getElementById('telefono').value;
+        const metodoPago = document.getElementById('metodo-pago').value;
+
+        // Redirigir según el método de pago seleccionado
+        if (metodoPago === 'pse') {
+            window.location.href = "https://www.ejemplo.com/pse"; // URL de PSE
+        } else if (metodoPago === 'eypago') {
+            window.location.href = "https://www.ejemplo.com/eypago"; // URL de Eypago
+        } else if (metodoPago === 'pagofacil') {
+            window.location.href = "https://www.ejemplo.com/pagofacil"; // URL de Pago Fácil
+        }
+
+        // Puedes agregar más lógica aquí para enviar datos al servidor si es necesario
+    });
+
+    // Función para manejar el clic en el icono del carrito
+
+</script>
+
+
+
+</body>
+</html>

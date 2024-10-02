@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login - Cisco Store</title>
+    <style>
+        /* Estilos globales */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1e73be, #1abc9c);
+            font-family: Arial, sans-serif;
+        }
+        header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        header a:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Estilos del contenedor de login */
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Títulos */
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #333;
+        }
+
+        /* Inputs con estilos para la contraseña */
+        .input-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        /* Ícono del ojo para mostrar/ocultar la contraseña */
+        .show-password-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+            font-size: 1.2em;
+        }
+
+        /* Botón de acceder */
+        .login-container button {
+            background-color: #1e73be;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1em;
+        }
+        .login-container button:hover {
+            background-color: #165a9c;
+        }
+
+        /* Spinner de carga */
+        .spinner {
+            display: none;
+            margin-top: 20px;
+        }
+        .spinner i {
+            font-size: 2em;
+            color: #1e73be;
+        }
+
+        /* Imagen de Cisco */
+        .cisco-logo {
+            margin-top: 20px;
+            width: 150px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+
+    <!-- Importamos Font Awesome para usar los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+
+<header>
+    <a href="index.html">Ir a Página Principal</a>
+    <a href="C:\Users\ASEGURADOR\Desktop\car.html">Ir a Productos</a>
+</header>
+
+<div class="login-container">
+    <h2>Inicio de Sesión</h2>
+        <!-- Logo de Cisco -->
+<img src="data:image/png;base64,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" alt="Cisco Logo" class="cisco-logo">
+
+    <input type="email" placeholder="Correo electrónico" id="email" required>
+    
+    <!-- Contenedor del input de contraseña y el ícono -->
+    <div class="input-container">
+        <input type="password" placeholder="Contraseña" id="password" required>
+        <i class="fas fa-eye show-password-icon" id="togglePassword" onclick="togglePasswordVisibility()"></i>
+    </div>
+
+    <button onclick="login()">Acceder</button>
+    <div class="spinner" id="spinner">
+        <i class="fas fa-spinner fa-spin"></i> Iniciando sesión...
+    </div>
+
+</div>
+
+<!-- JavaScript -->
+<script>
+    function login() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (email && password) {
+            const spinner = document.getElementById('spinner');
+            spinner.style.display = 'block';
+            
+            // Simulación de la espera para conexión
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                alert("Sos tan inteligente que creas la Conexión a la Base de Datos con CSS xD ajajaja");
+            }, 2000);
+        } else {
+            alert("Por favor, completa todos los campos");
+        }
+    }
+
+    // Función para mostrar/ocultar la contraseña
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById('password');
+        const passwordIcon = document.getElementById('togglePassword');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordIcon.classList.remove('fa-eye');
+            passwordIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            passwordIcon.classList.remove('fa-eye-slash');
+            passwordIcon.classList.add('fa-eye');
+        }
+    }
+</script>
+
+</body>
+</html>
+
+
+

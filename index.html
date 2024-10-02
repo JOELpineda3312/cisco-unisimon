@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Guía Completa sobre Cisco Packet Tracer</title>
+    <style>
+        /* Estilos globales */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #1e73be;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #1e73be;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            max-width: 1245px;
+            box-shadow: 0px 2px 10px rgba(3, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        /* Flexbox para organizar el contenido del header */
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            margin: 5px 0 20px 0;
+            font-size: 1.2em;
+        }
+
+        /* Estilos para los links de Acceder y Productos en la parte superior derecha */
+        .nav-links {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            justify-content: space-between;
+            margin: auto;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1.1em;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-links a:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Estilos para los links de Acceder y Productos en la parte superior Izquierda */
+        .nav-links1 {
+            position: absolute;
+            top: 20px;
+            right: 1130px;
+            justify-content: space-between;
+            margin: auto;
+
+        }
+        .nav-links1 a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1.1em;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-links1 a:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* Contenedor principal */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Tabla con bordes */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #1e73be;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Botón interactivo */
+        .btn {
+            display: inline-block;
+            background-color: #1e73be;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .btn:hover {
+            background-color: #155a9a;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1e73be;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        /* Estilos para secciones adicionales */
+        section {
+            margin-top: 40px;
+        }
+
+        section h2, section h3 {
+            color: #1e73be;
+        }
+
+        /* Estilos para listas */
+        ul {
+            margin-left: 20px;
+        }
+
+    /* Media queries para pantallas pequeñas */
+     @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+        }
+            .nav-links a {
+                font-size: 0.9em;
+            }
+        }
+        .video-container, .img-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.video-row, .img-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.video-item, .img-item {
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.video-item h3, .img-item h3 {
+    margin-bottom: 10px;
+    color: #1e73be;
+}
+
+.video-item p, .img-item p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+video, img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    border-radius: 5px;
+}
+
+/*Topologias de Redes*/
+
+.topologias {
+    margin: 20px 0;
+    text-align: center; /* Centra el texto dentro de la sección */
+}
+
+.topologia {
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.topologia img {
+    width: 200px; /* Establece un tamaño fijo para las imágenes */
+    height: auto; /* Mantiene la relación de aspecto */
+    max-width: 100%; /* Asegura que la imagen no sea más ancha que su contenedor */
+}
+
+/*Sistemas de Numeracion*/
+
+.sistemas {
+    margin: 20px 0;
+}
+
+.sistemas {
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+/*Calculadora de Sistemas*/
+
+.calculator {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #1e73be;
+}
+
+input[type="text"], select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #1e73be;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #155a9a;
+}
+
+.resultBox {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    font-size: 18px;
+    text-align: left;
+    line-height: 1.6;
+}
+
+#stepByStep {
+    margin-top: 30px;
+    text-align: left;
+}
+
+h3 {
+    color: #555;
+}
+
+#steps {
+    padding: 10px;
+    background-color: #eef;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+        /* Estilos para el botón de Ir Arriba */
+    #btnIrArriba {
+    position: fixed;
+    bottom: 30px;
+    right: 5px;
+    z-index: 99;
+    background-color: #1e73be;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#btnIrArriba:hover {
+    background-color: #155a9a;
+}
+
+/* Ocultar el botón inicialmente */
+#btnIrArriba {
+    display: none;
+}
+
+/* Agrega estas media queries al final de tu estilo existente */
+@media (max-width: 768px) {
+    .product {
+        width: calc(50% - 20px); /* Dos productos por fila en tabletas */
+    }
+
+    header h1 {
+        font-size: 1.5em; /* Ajusta el tamaño de fuente */
+    }
+
+    .nav {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        align-items: flex-start; /* Alinea a la izquierda */
+    }
+
+    .nav a {
+        font-size: 0.9em; /* Reduce el tamaño de fuente */
+    }
+
+    .cart {
+        width: 90%; /* Ajusta el ancho del carrito */
+        right: 5%; /* Centra el carrito */
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        width: 100%; /* Un solo producto por fila en móviles */
+    }
+
+    header h1 {
+        font-size: 1.2em; /* Reduce aún más el tamaño de fuente */
+    }
+
+    .add-to-cart {
+        width: 100%; /* Botones de añadir al carrito ocupan el ancho completo */
+    }
+
+    footer {
+        font-size: 0.8em; /* Reduce el tamaño de fuente en el pie de página */
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Guía Completa sobre Cisco Packet Tracer</h1>
+    <p>La herramienta de simulación de redes definitiva para estudiantes y profesionales</p>
+    <div class="nav-links">
+        <a href="car.html">Productos</a>
+    </div>
+    <div class="nav-links1">
+        <a href="login.html">Acceder</a>
+    </div>
+</header>
+<br>
+<div class="container">
+    <section>
+        <h2>¿Qué es Cisco Packet Tracer?</h2>
+        <p>Cisco Packet Tracer es una herramienta de simulación de redes desarrollada por Cisco, que permite a los estudiantes y profesionales de redes diseñar, configurar y simular topologías de red. Packet Tracer se utiliza ampliamente en academias y organizaciones educativas para enseñar conceptos de redes de manera interactiva y práctica.</p>
+        <p>Además, Packet Tracer no solo simula redes simples, sino que también integra dispositivos IoT (Internet de las Cosas), ofreciendo una amplia gama de posibilidades para la experimentación con tecnologías emergentes.</p>
+    </section>
+
+    <section>
+        <h3>Historia de Cisco Packet Tracer</h3>
+        <p>La primera versión de Cisco Packet Tracer fue lanzada en 2003 como parte del programa de Cisco Networking Academy. A lo largo de los años, ha evolucionado significativamente, añadiendo soporte para nuevas tecnologías y protocolos. Con cada versión, se ha convertido en una herramienta más poderosa y flexible.</p>
+        <p>Packet Tracer es uno de los pilares del aprendizaje dentro de la Networking Academy, un programa educativo que busca preparar a los futuros ingenieros de redes en todo el mundo.</p>
+    </section>
+
+    <section>
+        <h3>Principales características de Cisco Packet Tracer</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Simulación de Redes</td>
+                    <td>Permite la creación de topologías complejas con routers, switches, PCs y más.</td>
+                </tr>
+                <tr>
+                    <td>Soporte para Routing y Switching</td>
+                    <td>Incluye soporte para protocolos de enrutamiento y conmutación (OSPF, RIP, STP, etc.).</td>
+                </tr>
+                <tr>
+                    <td>Laboratorios Interactivos</td>
+                    <td>Ofrece una experiencia práctica para estudiantes con laboratorios y actividades guiadas.</td>
+                </tr>
+                <tr>
+                    <td>Multiplataforma</td>
+                    <td>Disponible para Windows, Mac y Linux, facilitando su acceso en diversos sistemas operativos.</td>
+                </tr>
+                <tr>
+                    <td>Integración con IoT</td>
+                    <td>Permite simular dispositivos del Internet de las Cosas y crear escenarios avanzados de red.</td>
+                </tr>
+                <tr>
+                    <td>Escalabilidad</td>
+                    <td>Packet Tracer permite la simulación tanto de pequeñas como de grandes topologías de red.</td>
+                </tr>
+                <tr>
+                    <td>Simulacion de Redes</td>
+                    <td>Permite a los usuarios crear topologías de red virtuales y simular el comportamiento de dispositivos<br> 
+                        de red como routers, switches y otros equipos.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>Beneficios del uso de Cisco Packet Tracer</h3>
+        <ul>
+            <li>Entorno seguro para practicar y aprender sin acceso a hardware costoso.</li><br>
+            <li>Simulación de escenarios de red del mundo real.</li><br>
+            <li>Interacción con protocolos avanzados y configuraciones complejas.</li><br>
+            <li>Soporte para actividades colaborativas y resolución de problemas en grupo.</li><br>
+            <li>Fomenta la creatividad al permitir el diseño y simulación de redes personalizadas.</li><br>
+            <li>Está disponible para descargar y usar en diversas plataformas, lo que lo hace accesible para una amplia audiencia.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Cursos Disponibles en Cisco Networking Academy</h3>
+        <p>Cisco Networking Academy ofrece una amplia gama de cursos orientados a las redes y la tecnología. Algunos de los cursos más populares incluyen:</p>
+        <ul>
+            <li><strong>CCNA (Cisco Certified Network Associate):</strong> Un curso completo que cubre los conceptos esenciales de redes, enrutamiento, conmutación y seguridad.</li><br>
+            <li><strong>Cybersecurity Essentials:</strong> Un curso centrado en la seguridad informática, una de las habilidades más demandadas en la actualidad.</li><br>
+            <li><strong>Internet de las Cosas (IoT):</strong> Aprenda cómo los dispositivos IoT están transformando las redes y el mundo digital.</li><br>
+            <li><strong>Networking Essentials:</strong> Introducción básica a los conceptos de redes y cómo se implementan en entornos reales.</li><br>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Explora Cisco Packet Tracer</h3>
+        <p>Cisco Packet Tracer es una herramienta imprescindible para los futuros ingenieros de redes. A continuación, puedes descubrir más detalles sobre sus funcionalidades avanzadas:</p>
+        <ul>
+            <li><strong>Redes y Conectividad:</strong>Cisco es conocido por ser un líder en soluciones de redes. Investigar cómo funcionan sus routers y switches, así como las innovaciones en SD-WAN (Redes de Área Amplia Definidas por Software), puede ser fascinante.</li><br>
+            <li><strong>Ciberseguridad: </strong>Cisco ofrece una amplia gama de soluciones de ciberseguridad. Explorar sus tecnologías como Cisco Umbrella y Cisco SecureX puede ayudar a entender cómo protegen las redes y los datos de las organizaciones.</li><br>
+            <li><strong>Colaboración y Comunicación: </strong>Con herramientas como Cisco Webex, la compañía ha transformado la forma en que las empresas se comunican y colaboran. Explorar las características de estas plataformas puede proporcionar información sobre el futuro del trabajo.</li><br>
+            <li><strong>Tecnologías Emergentes:</strong> Cisco está involucrado en la implementación de redes 5G. Investigar cómo esta tecnología cambiará la conectividad y las aplicaciones móviles es un tema fascinante.</li><br>
+            <li><strong>5G y Redes Móviles: </strong>Con herramientas como Cisco Webex, la compañía ha transformado la forma en que las empresas se comunican y colaboran. Explorar las características de estas plataformas puede proporcionar información sobre el futuro del trabajo.</li><br>
+            <li><strong>Transformación Digital: </strong>Cisco ayuda a las empresas a adoptar la transformación digital. Investigar casos de éxito y estrategias puede ofrecer ideas sobre cómo las empresas están evolucionando.</li><br>
+        </ul>
+    </section>   
+    <section id="videos" style="margin-top: 40px;">
+        <h2 style="text-align: center;">Cursos de Cisco Packet Tracer</h2>
+        <div class="video-container">
+            <!-- Video 1 -->
+            <div class="video-item">
+                <h3>Curso 1</h3>
+                <iframe src="https://www.youtube.com/embed/zTR4NN-T8tc" frameborder="0" allowfullscreen></iframe>
+                <p>Introducción a Cisco Packet Tracer y sus funcionalidades básicas.</p>
+            </div>
+            <!-- Video 2 -->
+            <div class="video-item">
+                <h3>Curso 2</h3>
+                <iframe src="https://www.youtube.com/embed/7MSazHb1nE8" frameborder="0" allowfullscreen></iframe>
+                <p>Configuraciones avanzadas en Cisco Packet Tracer.</p>
+            </div>
+        </div>
+        <div class="video-row">
+            <!-- Video 3 -->
+            <div class="video-item">
+                <h3>Curso 3</h3>
+                <iframe src="https://www.youtube.com/embed/WSwSjCiSpII" frameborder="0" allowfullscreen></iframe>
+                <p>Simulación de redes y análisis de tráfico.</p>
+            </div>
+            <!-- Video 4 -->
+            <div class="video-item">
+                <h3>Curso 4</h3>
+                <iframe src="https://www.youtube.com/embed/bP5fIGhhH0g" frameborder="0" allowfullscreen></iframe>
+                <p>Implementación de protocolos de enrutamiento.</p>
+            </div>
+        </div>
+        <div class="video-row">
+            <!-- Video 5 -->
+            <div class="video-item">
+                <h3>Curso 5</h3>
+                <iframe src="https://www.youtube.com/embed/IXlIWBATCG8" frameborder="0" allowfullscreen></iframe>
+                <p>Conmutación y VLANs en Cisco Packet Tracer.</p>
+            </div>
+            <!-- Video 6 -->
+            <div class="video-item">
+                <h3>Curso 6</h3>
+                <iframe src="https://www.youtube.com/embed/vYKwD7OF6xY" frameborder="0" allowfullscreen></iframe>
+                <p>Seguridad en redes utilizando Packet Tracer.</p>
+            </div>
+        </div>
+        <div class="video-row">
+            <!-- Video 7 -->
+            <div class="video-item">
+                <h3>Curso 7</h3>
+                <iframe src="https://www.youtube.com/embed/r-K5yZe2Ea8" frameborder="0" allowfullscreen></iframe>
+                <p>Interconexión de redes y troubleshooting.</p>
+            </div>
+            <!-- Video 8 -->
+            <div class="video-item">
+                <h3>Curso 8</h3>
+                <iframe src="https://www.youtube.com/embed/gQH8ezSOHh8" frameborder="0" allowfullscreen></iframe>
+                <p>Configuración de acceso remoto y VPN.</p>
+            </div>
+        </div>
+        <div class="video-row">
+            <!-- Video 9 -->
+            <div class="video-item">
+                <h3>Curso 9</h3>
+                <iframe src="https://www.youtube.com/embed/n2UyuEOIOFo" frameborder="0" allowfullscreen></iframe>
+                <p>Implementación de QoS en Packet Tracer.</p>
+            </div>
+            <!-- Video 10 -->
+            <div class="video-item">
+                <h3>Curso 10</h3>
+                <iframe src="https://www.youtube.com/embed/-KIlViMTBG0" frameborder="0" allowfullscreen></iframe>
+                <p>Integración de IoT en Cisco Packet Tracer.</p>
+            </div>
+        </div>
+        <div class="video-row">
+            <!-- Video 11 -->
+            <div class="video-item">
+                <h3>Curso 11</h3>
+                <iframe src="https://www.youtube.com/embed/BZWKTbtlHWE" frameborder="0" allowfullscreen></iframe>
+                <p>Descripción: Introducción a las redes de área local (LAN) y su configuración.</p>
+            </div>
+            <!-- Video 12 -->
+            <div class="video-item">
+                <h3>Curso 12</h3>
+                <iframe src="https://www.youtube.com/embed/KQuyxNHZvLk" frameborder="0" allowfullscreen></iframe>
+                <p>Descripción: Configuración de protocolos de enrutamiento estático.</p>
+            </div>
+        </div>
+        <div class="video-row">
+            <!-- Video 13 -->
+            <div class="video-item">
+                <h3>Curso 13</h3>
+                <iframe src="https://www.youtube.com/embed/vCsXuUCx3EI" frameborder="0" allowfullscreen></iframe>
+                <p>Descripción: Implementación de seguridad en redes.</p>
+            </div>
+            <!-- Video 14 -->
+            <div class="video-item">
+                <h3>Curso 14</h3>
+                <iframe src="https://www.youtube.com/embed/Ls9xPHy3v0A" frameborder="0" allowfullscreen></iframe>
+                <p>Descripción: Configuración de switching en Cisco.</p>
+            </div>
+        </div>
+        <div class="video-row">
+            <!-- Video 15 -->
+            <div class="video-item">
+                <h3>Curso 15</h3>
+                <iframe src="https://www.youtube.com/embed/izfYxDKdTgQ" frameborder="0" allowfullscreen></iframe>
+                <p>Descripción: Integración de VoIP en redes de Cisco.</p>
+            </div>
+            <!-- Video 16 -->
+            <div class="video-item">
+                <h3>Curso 16</h3>
+                <iframe src="https://www.youtube.com/embed/EtB3Hk0DLps" frameborder="0" allowfullscreen></iframe>
+                <p>Descripción: Configuración de redes inalámbricas (WiFi).</p>
+            </div>
+        </div>
+        <div class="video-row">
+            <!-- Video 17 -->
+            <div class="video-item">
+                <h3>Curso 17</h3>
+                <iframe src="https://www.youtube.com/embed/_BSWdhFDd0I" frameborder="0" allowfullscreen></iframe>
+                <p>Descripción: Estrategias para la gestión de tráfico en redes.</p>
+            </div>
+            <!-- Video 18 -->
+            <div class="video-item">
+                <h3>Curso 18</h3>
+                <iframe src="https://www.youtube.com/embed/d10MIaEg1EU" frameborder="0" allowfullscreen></iframe>
+                <p>Descripción: Implementación de sistemas de monitoreo de red.</p>
+            </div>
+        </div>
+        <div class="video-row">
+            <!-- Video 19 -->
+            <div class="video-item">
+                <h3>Curso 19</h3>
+                <iframe src="https://www.youtube.com/embed/ha4Yh-yhU80" frameborder="0" allowfullscreen></iframe>
+                <p>Descripción: Introducción a la gestión de identidades en red.</p>
+            </div>
+            <!-- Video 20 -->
+            <div class="video-item">
+                <h3>Curso 20</h3>
+                <iframe src="https://www.youtube.com/embed/pPjxUkyNGnM" frameborder="0" allowfullscreen></iframe>
+                <p>Descripción: Implementación de servicios de red en entornos empresariales.</p>
+            </div>
+        </div>        
+    </section>
+    <div class="topologias">
+        <h2>Topologías de Redes</h2>
+    
+        <div class="topologia">
+            <h3>Topología de Bus</h3>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARIAAAC4CAMAAAAYGZMtAAAB9VBMVEX8/fwAAAD////8zgQFAwWmp6b9+Pr8//90pdo1QoEFAAXg3t5hYWH/+Pv8//3/0gBNa8OWlZT37/IEgdw1Qnv6zGv/t7btswD5wzi+v8fDwsD5+fviqQD66dY6Sou6urrMz9Xq6OhKYrjVnwD7yAB2dnf6x1T/rKtZWVptbW5OTE2kgVj24+XiAgSXS0yNjY39oqIhICQ3Njs/T5gVFBOenp5BQER/f3+nggSxsrr7zc11NjZSIiKSv+Z7teMxPngEM63+vLz35egsKy4gJjj+xMQZAAD/amlIR0sEddUEZMoAm/MdHBvfsQT20ExmKiurVVX/mJjJYWHOb2/9jo5BUqWjy+uItN7/34x2xvwERbkEVcJdSgDQAgSgkWgsDxFKWpWHNzf4fX0/GRnUVlWvSkkAABFWdJZfi9Rwnto2QGNJX6i42e8bITJRbLVba6GvqJcAG6lOV2oErfvOt3yqAACaAAA8R3ReYHNPbY5Qa4UkNn3XgoK5Y2TJeHglAAG8Tk7kamr5d3fY4PAjHxU5O0VGYaJrja9Zf9RkkNUoM18oL1EWHDIIEjNnkL1OachcerqMmLZTYI9xeaI5Q1Z5msIABi373qLiyaPHsHM8NSRaTiRsWDylhkbfyb3hrl9vPz9nREN8AABdAABEUnQcM4YUI1I4xPFiAAAeG0lEQVR4nO1dCWMayZWmegAhgYjVQ9iYTgQ4UTjCCGhxrFuHAxjBZtgVSMhkk3VsgQ7LmpGz3ni8Ho0SSxn5kuKRj9n7yGad/M59r6q6aSQkI9EeKV4+y9BUd796/dWrV1Xd1fVMph7eLZxO9qVPwkRna6KWxjcPntMi8i37mnudRx32TcMqclhNkihmRbGZJqG6VjGbhX000UrP0NKcLJVtDuJup8ROo1DFNvPAbXoIbktOLtJKTxFRptRWxW8YWcXNkI9klUwgEMhHRFHJYEpGyUpW2B8IuJWIVVTgECtlIcLSshJcHp4DO0Q4LhMZlCJ5OE1kkvNMiCYP8sBTInm2rbBzRCpYjOQhb/XUs4RTUr4YZSjH3JXN8fHxuZiiBFhKNROJuKuj4+OjcwFF+aK86RahnlgjgTlMq7oj1oi7Uqbn5PNfjG66s2Lm16OjsQiKtuZ/TYWgvBjP49d5q1PMbNLtzQqeM+rOggblQD42B3I2K4p41rXHac1vEoYb21s36MZMJVDlaXOBwBzbKsdgqxGLgMKRQJmlbQYUN989XomVyUwsEqn8Bs7KYwUR3aPqPlUIGc2IfdnAOPvRqMZmQaSigOBqhR08UYmced2RlNjc7BJpLM7OFiZIY7Y+O01Gq3VCHs7ONshMfQsuaasOHMxWUf9In0nMwwWObm0twLXHgLvxOdxdriMlCu4j44Gsk1EyMzuL+6ogBTKYnf1CsfaJQMnC4sOHNyCdUgLnTGxvwxGFRaA5bz1rSkxQiaGwJqoB+CT1QD4AX9sFQraq1UUyXVggM9VMHspwZnuRWokzG5uBgs9nKnBl22U40+2uLi3M1peQErxcQqqKxChZqAYqZdLAay3U6/VqIGJyopUsbddBcrmuUtLY3iIDi4XC0gJWrbOmBJqZDFASU9zU8kWleoM8BEq26/UFuJgJUnaLYgYKv/CQVZxIZYDMZUTRvcl2A4vVQqGAlFTcYDWL9BROSSySB4tbBEqWlspl9DKUkvGlpSUyXdespFGvNqDWLCwWKsrZWwn4wQzVDK4ALL4vUmmQJaDkxrQZrqNwg8zmJUnBS2WU0O05RZLys8RcaIBDCYzOzEwsFICSKjiUCdgAj8ApCfjpqYvETF0FeAqnqPqShe0qLQukpBqrT1BfUlXOgZWYVCsBSmIRCSlBK5menp7YrNYbZDYjSnnNSgRJqVAHimfdQCuJxX6PvhIpqcN1LTx8SPf3MUoinBLwJXNzmwHNSsrlBnACIivMSir1wlZ5BpyU++ybYWYlWFibZLqaV9xo6FhxqpVYJh8D9SvQiDKH0ID9Sr6KPGDDSmbAIYxDAQNb1DgKW7xlWQBzo5RU0DdNoy/ZrsRigUyW+5J6tb7IWK5m4IhGYXYG05D17DmwEkZJBEt/vFqFgp6og/+vQ59EpK3LbBUMnPlC4KlSBa/B02axKSnXtwsL1Eom4HsCyp85WErJdnULDAfbrUK9Wq3GeIsD7nV7CYxsC2XUgfZtIG6rvg3nB84LJVAlROxjmBuEt61wUX3QBwFbIDfQ9VViaudiexsMvAF9mPFYHrso0+gFFiglA2S24o7Vb1CfrPZLblRjqvWMu3X9ElKuVLkkyHGCb2XORcXJzzXAsUrQKR03k+mFqluJTTR4F1SJbaKyZexqNiYoKtCwIkmbMUWEc+CqpsfnKrHNxsJiY6KCaeUGXDt0Aunho5WMdip4CqxQdHsGzofWHbp2E9A31rYiZ00HQopkYgHoSMPgI1CpVgJKVlRgqMNKS4SdlWrMrWD/hQIGQYo7VgFPExFhuMPOgbQM3amIfdDLx28JvhAwFsrmAzG+bTVZeXqADW8qUJ0ydARVQe919p1XBIzdIlkrDnDFbCRCN3FQyvfCToBohaNwL+wXJZ4m0d3sHMkKadlIlo2j6bdVZIc3T6WyTVZNjnoM3cpqMs8FmncqJLbdeutCS6SgNzik1t3svomTncZvoagpulP1Ypw8Y0lSVTg3dPTQQw89vNcQjoVhkgztLBunc1vpnpE0YkRFiOEfXzkcjmDyBPIFv70tfosfviMfH5wCEujnYAg2EQ6/KYaLxZS/W04ER7iYSsm53JdfJvi9BT06b7EFv5ySQU48nhhoEbFMP09C7tty8qbC4VQKVQalD+ncdU6C443r5k2X6/5NxH38evlghePuSSixp4pQRjs7O0hLPF4qlRLxBBBUSiQScTJiKCXDwzfhT8OjR3ceqzCCkvvz8/OXEBc4bq1O2Rgen4gSeaxV0JMnT201JmjqtaGU7Kg5aVndUlW2DRhAye2xAxncqtlOR8nwAUFPnqqSpq6mjbWSgznZNBCLAVYyPNxavKu201KCgtaakpqKGk6JpjOnZGrVQEqC9/shA1Z5+IVo4ldOSkkrubeakoylZGf4ACe2VS0ncxeUsFGhELzdD5zwykON5OlpKXG1Crpge/qOrGSHqTym5nRrVcupCyvROjbB28P9NAd+KU90lHRUcVRBjBJd6ekVNYYSCcfzElpJPy/HS5eeLS8/W72lqTx1akoEy+37gN0QuFcqHi9lbNe8N7z6RLuQyU4oETwWCj9SQiUxTsjVpzpFd7qnRPBf3bgCIH7PDlcZslome3tk75aaUW3y9JQM7e7u7e3+LkgrTj8jnZA9Qu6scvlTkx1RYrq6sdHfv7HspZQMq3ayR143KZmcNMBKoC94dXnv00+J3SP3c53H+sneVxeukn3eb5ic7IYS6EtBH0qjZLh/+Ap5dmmY3MbrmKLSO6MkVSLE/CXxMCth5F6BXuTVW+hLprDkDKIkBzCXiB19CVN5eLh/bP7pLnkOGU3RjLqhJCfLpYS5aSXUnVy6T+4/tU3WpiYnO6VEknOpsDnRpAQ0Hdtb7ie70OWbsk1RPQ2kJAFWstOvmcnY/PojYl6dmpyavDbZJSXxATOMaYLcvXJK9sgudCZq164x+Z1ZSRysxAyU5FxNe55fI3tPqalRQdeMoSSRwJz83h2XaiVAyT5U9ppt8hPGSFeU5OIqJcOqAx/bXTbffAqMfPLJJNAytUI6ECUn4mYdJVzRdbL3pFabBEHGWUlcpjn5vbILVWY53SRk+IkNVb6GKp++EWaUEEpJv0ulZH3+EiGrKP4TlN5ZvySX0ihxuVRF18fI3roNBYGkmm3q06gRlOTiOO4FSqjKWEPHhgkZ+2p/kqs81UW/BCgxx805Tgm7kP5nw/OXlslzlA/XAfI7okSOl1BRpOSKiyu6tjZGfrdaQ0UnUVGDKIERdS4HlOT6XWpOZrLbf//x19fQRGrdUpIolUaYewX5mMMzsjffT0pg7lBrrnVMSS5eIuEgqziqlayNjZGda0+vUU2nAMZQAjkFixol0DMce8bukaygv6I5dUcJqzhhpMRF++J7KP3Vvk2Tv2LuiBIwuByvOFdcvFf/CChZBXaBE0MpoRUnx1QGSlxXXj5+/MC1rxVjF71XSolZRwnIf7Ry+9nYpQv79ELwSlYGOhCVUytO3KUKGht7Xrtz89K6DRX9ZNI4Srh7bVIy9ty2vzZ/aX+V6ow5EW83FUelhGFsbP8RFO/a+r4N5aMPWDF3ICoX5+615NI6C6ugJ0h6WqtxRY2ihHBK1H7D+j6OM9fW0SAnUeVa15Q4hPCbOww3N2j5rq2tP2fybSelROuWALVU0P7XVFDNcEq4yneGN4apM1+DnDAraNuMoOQ23nGFIeCry682NjADvBLM4MRWsvKK4YWLa8oVnTSqxQFfQilhVdTluv/i8ktVZZaVAZRovgSMfuOi/0X/Bq05mEGtZuuQkhKjJH6Fod918eLLP44Nj63vP2eaGk4JU9nVv/HS73u1AZSsP7XRcoRG2AgrweaMNp4bryTB92p9fR1Hfih/JdGBKI2ShEsj95Xpty+gvwbk2r4GSVM24ymBPxx1b1wWpMv76/v7TOUpQyjZef36Ksfu1XQ6fff269dv7iI+f30iSuJQ+1z4H9tin93+4tGdO8/BTqD4bJ8OGUrJzo6q8tV/Co84HFfhIiju3jWAktCA/uFQKKz7YSa5DsRrvmQgR+838JOjhAyYzewp14BMjGyE7UiMhvhI66MtXxeUpBIJs0OQfD6fhyGajtKHoRaLlyYmh+wdUSKX8OaAMMIeQ1IUi0H2EDGMaSkz6UTSW1T2x0spc6kEopqPWr3RKGgdTVs8Hvrb4/Wc+tZr1AyFiLeQdM+c1WfDJ3vkjBUHRh4e3Vl29pw57VWlQ4anVFSnsh9NDqzQrsvJwzIa8ZxI5fbyPVGogsFwiz1zY/FKJ3qknWP2qisdwW/x4u3Y5KlLrC0ky1B6JBRy6J6DC3aucvdGCMIG/Xav16IpjfyOhOjcgfTJuBbBWi3JpKaoEygZsrwDSkxWP2ZlUcddqKbXQec5OHwGzKKwinbwFlrNk9CfMPEhB9RJ/wkV9Vr83LSwrniCbKqDxYjpHs2MMCfIilMi+Lxeb5pTMuTz2bucRSEAIXAdFrUOepPJoaEoglXOdOcFjOSCMD+7eMECEtRJKqFoNGnpSk89JK/3MpjekMRU9ifREIeGuN7R6FB3c1gESy4lp1LFpNfr8fj8Alg+wxBFMurtdOqQ4KATYEIeu98voaJQdl7mSyz4NdT1FBgVUhEasWIqjSqDzv6oqjGwAX9D6e7mIAl2YDg5FPUJaCzRtMfbiih+0KlDb8tGiFKjSNv92AR6JertKC0MUUmT0GUlklBmMmkRfEmwDgf3VxYVUJCwE/3sKamR8BKg+lkIdLVybJYMPhSI5+RciSXkCJqKJTpiOdYifZQCjzAEVhdOyUXslqTgk86WcsC2LIdpAUp+f3ek+CmsEkH95JwekBLHlISMriwdDJ2mw6Y+Ek6koArB1agA68zJQVmWi3I87PEVyXI4FT5OEK/aUhzl6CWl8HeO9tjMHrDzgeXloNQVJ05nX59T8BCZZyRrKsupIk3IlZKeNFneCSVO3a/3k5yckplsrKoyfuRSObiSInDu9ycSy8VoBzfvVEU5qESUJ1NeSlF7lCzLUUfKgC5biFCpKhv4KePUtSJ8yeYh6IXG4yPBxGkp8cap7gzhYjBYLLIOOW4UZY/gceRKAx3MNBNCZhmNmSsqh8HMqNnkglCCiZRgl0txOWxAx97EFAYdoW7CX0ib0hiEpKJDMCXDcRhpnaAf0XIhvlSYC6QTJh3qJ59CiX1nvzfdQc0UHMWwbsalI+TQIegImgTRG5ITpPv2RxgJN1UMqf+1aZ8w5BZMdkv01NNMJC+6aZ3fboGXqtCR/xa80PVNt0DXyxkBBZ3gb7rtTtGc7DoNf6kB1b0MrT/NobvWWMM//5TjV/5TDaH003+9NRVJNkJVe5xG9FF0o76m0j+1n0bn49H3nQ8YvvX9091x0Gvq+1sVUZ/VWD1b0PdDrvQH371ofB5dU6KDcPHDDz/8mOKu512+pK1R8q3zT8lP/goAvHzYo4RBuPizn/+EoUcJg3Dxxz+j+PnPepQwCBf//sccPUoYepQcglZxfoYVxxD12uPPiZKfq+hRwgCN8E96LU4LeL8E0aOEQbgI3bQeJXpQShh6lDDQMU6PEj2Ako97lLSgaSUf9xphhp4vOYQeJYfQ2i8xRL32+HOlpGclJjrG6XXoW4F31ZrDvh4lpoM3B3qUmHq3kNqgR8khaL6kd1dNBTbCvRanBc0xTq9fwiFc/FjF/zNK6GKZPBCJ06T7Ifj+QYXqS3R7j/7hbPfjuIPOGSWCYB0cHLTyf3RTg85KvOKgOMgPHNRvaIdb9WfqNrUfVmvLQSxbGsRk8Ic/4PjuRXYcfHDxKgb1Pwdb9+kO5pLplpUFTBn8jir9+xe5MuqBrcL5b5NFnSRLZ1cm+awdnN7p8VjYaziAy3R+CX+Xozn3UzfH9u04KN3j8fnorBW//19+hfhXQPKU0g/prkr366T/wtKJdBN9Y6eUy6WK4aAjNJKODiVBqMeHU4IlnHNE55XwL0n0s/nYySGcJ+sI4lpx8cPrxLXgSOkSE9vnZN/SYelFA6VbO5VuMsdzcuqgRNHaZn6N0yRZ/faDlMi5eClhPgKJUhvp9rbSTXQa/7uTrtM9erx0U0I+RLHYvlt2mGYUepTGA6hyuwI8gfTckdLNR0pv/+I8Sre31X3gMCWlsCMUSuOLAxZKst/aXuVB0U5fkHgryarGCbUIQ+k0kw7ij+ADX2rg0g8YyGGNj5KOL2lYpbYzwA/TfZx0U+7tRejkJHs6NBDICW26QwM5sXSzMdKPFG9KgVBLU2hnJBePNRAzK0JVZUvTpttJH2wn/VhCWqQnmfmdSPcjagyTbjaFhzS3dDzJFpCZDjmY1R1D8lFO7y3SsT6GuE2XOnepluOkm3TS05r0+PG6J0wOy9vc0qGW61iSS22L8KTS22GASz+JSz259FTcNOJBlyr0tdJr6sO2/EindzIDGTS1lX64xpxGul9seQWLrt3PdD+d9KBsCrGKKOlmANNGXDM5vVOiInFlreOktlg17Te1SIcu2dHSE8dJL7WVLkot0k2SdEh68CS6y6YinTQfhTzoS3YgBcSMoM8I4hLOdNFk6jnY6+rmgSNBJYPiJXzzKEVfb8IXBXBK/kHpVE36UosqnXUij5GO8hMo/pD0DnQ3v013nfSEye+NhoLt4Dgp/k7FvzXfzTgaJxZ/CP+uZSgbKT2E7we3fz/jpPjlX6r4D2MEvg3/qWU4Yqhc1gwagf/67l9z/MgYgW/Df6v5fT9pqFw6mDME31PvSnzwI4MkHg/p22p+f3FZMFJwmx5Ou06g822xep193/uBevPqR81+wsH2kX1Do6MbqzrVaDgH/+nAbr+16ND3bTU/oKRNdnr5bYTrb+vp7vodHbv45GhPSVsIzt/PdP/eVztKzhc6pwQYuXeve07eI0oE5+i969e75+T9oQRs5PpH1w3g5P2hpG/0o4+Ako+ufzTeHSfvDyX/89m9jygp9z6b8Pcdc+BbM3xvKPFF09eRk3uOaLSr5XPeH0oEwU/N5F66y5ds3x9KTJyS6+kuo1S9l5R0meF7R8m9HiUaepQcAqPkeo+SJpAS6Kp91qNEA6Pkeo+SJoCS6z1KWiD4P4Pe/L0/9CjRINj/cO+zzz773x4lTUhR+nCg21iF7xMlNP6YJHUbSfz9osSYDHuUHMqwR8mhDHuUHMrwz4CSD3qUtKLFSg4+mXsnGaqUfHCeKBGgJVUtQvre36j4hYQTnQ1bWfkInE9KpDBdqFVmwcy1+BS5P32KESBOu3rtsdDNN/r2tziAEsMXdjytej4acF3mEddxzhOfqkQ/DQza3czS3lyt9Je/UBFNvniBS5QbvGD+qfRLjdGAUBzrgP2va19/bbPBfyNjDzezDLMYG/FS4tDrAFAU54ASeexgbPdmwPXDlDjbbup/O9vta8ky/PrNm9utwJA3bxCvyXmghIanXmsXcP1QhGqc9yuyObu4acVmCVIw2rKVJvMvdV/7LMMuVgZffXXhK5rhk1s84q5tauV8UHIgjrku4PrVA7F0rBHFHXDnI6LJaY3kM/mI1SkqmYwiDsIvRXSK+JU1mbIK7mufo1MI3z9gmE9u1ZoBx7t8NNQ9MGj3kQHXD1qJNRKYGx0dnYspYp/onitvBrJSJFYux5SIe7Mciwzijy/yolX5YnYuIx6VZfg+zVBnmFoZ2FbO0JeobZ4aoVol5f7ukXHM8fKpCxyvKINKBZqkqiIqVULKgXzlN/gjP0fIRCUiZspkJpZtn7GTUtJSCE9sq+eAEkGd+qfGMee2PEyILo55a8URM7Nw+VtL8JHJ4jYpu/1KnZhJPVZtkLoSCSxA4pziP44SEw2zxiO8Y46P1u7snwdKMI45YNnTGsf8ElzSE1W/2mQrJZHYBCnHMrHyzGZGic2QBXKjogAlhMzUt5EStJgFMhqItKVE65+F7+sKwUXtrknJwNlRksKQS6XWOObzl3bJp4RXHIwAntNTIuEV1/NixB3LKHnYLjTIXCZfJ40GeVi4AbvcwMQiVCe6cZASwfKPFBaVElYIz8iVB66XKiOTZ0mJnEsVzaXWOObz/eTOLsG47lMsJLreSpySMofeQxIVJRLBiy4skfGYGyhZJNNIibsyAdxMkNlAgFLS2nQI6WeIP4W0WKe0EPagoqreCzI9w4ojpXKJBA3trotjPkZeP/kdWZ2arPGA61cPWUlVsUbcgUy+0iBLi2AR9RhQUpghSw26SRYXF8DBxpCSSOv8JCFagkFTiTQpoSHewRORq0iHjYa9P0tfIid42ENdHPM98mh+j3xd0wKut0aCjFQImXUr7rmJ2foW73+XYatR2CLmG2S7PsoTt+pLZKYCthTRNcRCOpcKxxNmPSVYCsS1S+KTNmaWk5+fNiaIAdDHMVcDrrNBBnlM45hfm7S1Bsd0ZqFBmahX6hNkoQBbCwsL40BHgTTq1TKcVoDKA2kLuPshmdmuVirQgdFOF9JxKj0kFHWUzK+tf/UkTlj4brSSs6QkHudxzK9o0cWxri+TuzU14HprCFWnVan+hkzPTINjLYC9VAK0pgAlVTe0waSwSMz1WKAySwaAEjINmAg0HQpQUsIoliNC6v6wSzWS+fVLF57sYilco/G1H5wtJSRVbI12v07d3XMaxxwjaR8MoSrmq+O0ya3OTjcqSjYSGJ1eKExPxJTM3PR0YWEa2t+sUmlMLz6cvoEASrSToeLkVEq0yOlj98mzCxcShIW9h2792VJSInJKjWN+hccxX7N9/vn+0XHMRSVQqVZj+Xwghp16qwLfMdyMZOhGQLH2iXm6WUEEWitOglNyuxlMfo2QZ3vkNVAySQvhwZdnSsmBOOZAyX7Ntrp+q3Z0HHNrNqJEsqKYhQ/2EwCbkhihWzjUE2lihO/RgJQkcmmNEloIa/MYmf6NFuL9jClpxjFXA66vrj5i0cXVIPHtYg+f9qknsxLCKcEsqV3u1yZrqzYtxPv5oKQZx3xtTAsSTwOuTxkQe1gDtRKt4vBSGF7FsPfrT7EjRAvhrCsOo+TOq1d37mAg843+ljjmNdtU/N1Q8kwrhaf7WiGAlUDN+bx05pT4oOLwQOavLr7o36AB15+zIPHvgBIzpeTNTQYc5oxhIaw/V4PJnxNKXGoc88umyy835tdpkHhbDZpEwysOpUR+85Lh8QvXBm121p8zwwQrOfuK4+MtDnRhXRgk3uR7QQOuo4qGxDHXoKPkWT81y/6Nlz7fyz9Sw2RR72tTn3cScPwdgbtXn32ZhtSEIRn8LQ+MlHKlUim+/ClG3UyRd0PJ/X7uX/s3Xgj+F4/W19dXadj7mu3BmVKSQwU9kswZgXFxvBR3sDUDSrAbH7MY+KBJR8lr9qTi2e3dZ3+6a7FYHrx58+DBg5WVlccrr8+WEjP06T24pAKHL82iAV+mi1XR97EN1E/X4uCjVQ3plO7B1pdEPrv7JXGmgz6OuX2IhQT2ahF2jVQPKUlRK6EBEFkE4hFcz2GELoZE0zCOt4F5ngx2Dy5KE9UHXPdbWATjd6MVUILraSRG9Kty0BDsIRaD/cwfkw+ygOtqxFIa9RCXzoB/3neimZAM0ifBLfcu1aUADc/tNBBYkHhuJYIXqkyahzEfwZVW3gEnVr/d67Vo/gl554FJDWzYTg2nFE3SUKl2P130j9UZC6/kuLLKKQPeHgeRrlujVUu/32938FIQrdbuQj4bAGGELgKT9gE8HrvE53uoy0Am08045gbNzxKAAawjPr5ipBdj145QoIcdSRvZvJ0KHmoUXsEL+oyEgzTarhpzNxrFsO+hNAYCputdGpGhMCTv7Oykikm6Qhb8tOiKIWmxRKE/cKaPyJ0SmCqu9BGP64N203DdOVlmUarNdijMYi5nSFUXPElaV+0CroIVtdg9YJ9evs4qIIrrmIqY09m2OzSOeU7jA2OtY8D1FI1jLpeiGHBdTqcMmZ+Fq3D6fHbBQuJNYNc5TsPew8ZyjmC18ul88DcPIU2YUfA45sAHxjGHpDBsm4OCJxFfDgcNCNpt0h4KBxPFHA94z8Pep1I5OQyFUJTjIY89BKWQaHM77xuCQIPCt8QxZytVBdlKWYJgjxZLxIjQ7mqOfpJjNpjaocSAYaZYOHn4iudEO1ledkSNHF2dUEELNoMjRyA0RH2r3esxMEdvgldTNMtiKoyT+XBLDgI1ctwuJFPxRM7IMfgJwfuPR4DVF0O9neCV9XapW0ONfgftMA71RIOpM5zsKRyHbhbiOAoitjswumy/pLZFojpJZ95x+ybhFCRrc4UyyQT/2QtgEqYbxMT/AdBUXcHeXhMKAAAAAElFTkSuQmCC" alt="Topología de Bus">
+            <p>Descripción: En esta topología, todos los dispositivos están conectados a un único cable (bus).</p>
+            <p>Fórmula: <code>Número de dispositivos = Longitud del bus / Longitud de segmento</code></p>
+        </div>
+    
+        <div class="topologia">
+            <h3>Topología de Estrella</h3>
+            <img src="https://salmo-01.tripod.com/Fotos/Estrella.JPG" alt="Topología de Estrella">
+            <p>Descripción: Todos los dispositivos están conectados a un dispositivo central (hub o switch).</p>
+            <p>Fórmula: <code>Costo total = Número de dispositivos × Costo de cable + Costo del hub</code></p>
+        </div>
+    
+        <div class="topologia">
+            <h3>Topología de Anillo</h3>
+            <img src="https://new-prestige.weebly.com/uploads/2/3/3/1/23318496/2062756.jpg?421" alt="Topología de Anillo">
+            <p>Descripción: Cada dispositivo está conectado a dos dispositivos vecinos, formando un anillo.</p>
+            <p>Fórmula: <code>Tiempo de transmisión = (Número de dispositivos × Tiempo por dispositivo) / Velocidad de la red</code></p>
+        </div>
+
+        <div class="topologia">
+            <h3>Topología de Doble Anillo</h3>
+            <img src="https://www.areatecnologia.com/informatica/imagenes/topologia-doble-anillo.jpg" alt="Topología de Anillo">
+            <p>Descripción: La topología de doble anillo es una estructura de red en la que los dispositivos están conectados en dos anillos separados. Cada dispositivo tiene dos conexiones: una hacia el anillo interno y otra hacia el anillo externo. Esta configuración permite que los datos circulen en ambas direcciones, lo que mejora la redundancia y la fiabilidad de la red.</p>
+            <p>Fórmula: <code>Tiempo de transmisión = (Número de dispositivos × Tiempo por dispositivo) / Velocidad de la red</code></p>
+        </div>
+    
+        <div class="topologia">
+            <h3>Topología de Malla</h3>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEMOMpfzBCHJV9S1I_IkD-B-cAYcMx4JuBPg&s" alt="Topología de Malla">
+            <p>Descripción: Cada dispositivo está conectado a todos los demás dispositivos.</p>
+            <p>Fórmula: <code>Di <-> Di - 1 ( Anillo Interior )</code>Di <-> Di + 1 ( Anillo Exterior )</p>
+        </div>
+    
+        <div class="topologia">
+            <h3>Topología de Árbol</h3>
+            <img src="https://topologiasdered.com/wp-content/uploads/diagrama-topologia-de-red-en-arbol.webp" alt="Topología de Árbol">
+            <p>Descripción: Combina características de la topología de estrella y de bus.</p>
+            <p>Fórmula: <code>Costo total = Número de segmentos × Costo de cable + Costo del switch</code></p>
+        </div>
+    
+        <div class="topologia">
+            <h3>Topología Híbrida</h3>
+            <img src="https://www.areatecnologia.com/informatica/imagenes/topologia-hibrida-mixta.jpg" alt="Topología Híbrida">
+            <p>Descripción: Combina diferentes topologías de red en una única red.</p>
+            <p>Fórmula: Varía según las topologías combinadas.</p>
+        </div>
+    </div>
+
+    <div>
+        <h1>Teoría de Sistemas de Numeración</h1>
+        
+        <div class="sistemas">
+        <h2>Sistemas de Numeración</h2>
+        <p>Los sistemas de numeración son maneras de representar los números. Existen varios sistemas de numeración, entre los más comunes se encuentran:</p>
+        <ul>
+            <li><strong>Decimal (Base 10)</strong>: Utiliza los dígitos del 0 al 9.</li><br>
+            <li><strong>Binario (Base 2)</strong>: Utiliza los dígitos 0 y 1.</li><br>
+            <li><strong>Octal (Base 8)</strong>: Utiliza los dígitos del 0 al 7.</li><br>
+            <li><strong>Hexadecimal (Base 16)</strong>: Utiliza los dígitos del 0 al 9 y las letras A al F.</li><br>
+        </ul>
+        </div>
+    
+        <h2>Conversión entre Sistemas</h2>
+        <p>Para convertir un número de un sistema a otro, se pueden utilizar fórmulas y métodos específicos.</p>
+    
+        <div class="sistemas">
+        <h3>Decimal a Binario</h3>
+        <p><strong>Método:</strong> Dividir el número decimal entre 2 y anotar el residuo. Repetir hasta que el cociente sea 0.</p>
+        <p><strong>Fórmula:</strong> <code>N = Σ(d_i * 2^i)</code></p><br>
+        </div>
+
+        <div class="sistemas">
+        <h3>Binario a Decimal</h3>
+        <p><strong>Método:</strong> Multiplicar cada dígito binario por 2 elevado a la potencia de su posición.</p>
+        <p><strong>Fórmula:</strong> <code>N = Σ(d_i * 2^i)</code></p><br>
+        </div>
+
+        <div class="sistemas">
+        <h3>Decimal a Octal</h3>
+        <p><strong>Método:</strong> Dividir el número decimal entre 8.</p>
+        <p><strong>Fórmula:</strong> <code>N = Σ(d_i * 8^i)</code></p><br>
+        </div>
+
+        <div class="sistemas">
+        <h3>Octal a Decimal</h3>
+        <p><strong>Método:</strong> Multiplicar cada dígito octal por 8 elevado a la potencia de su posición.</p>
+        <p><strong>Fórmula:</strong> <code>N = Σ(d_i * 8^i)</code></p><br>
+        </div>
+
+        <div class="sistemas">
+        <h3>Decimal a Hexadecimal</h3>
+        <p><strong>Método:</strong> Dividir el número decimal entre 16.</p>
+        <p><strong>Fórmula:</strong> <code>N = Σ(d_i * 16^i)</code></p><br>
+        </div>
+
+        <div class="sistemas">
+        <h3>Hexadecimal a Decimal</h3>
+        <p><strong>Método:</strong> Multiplicar cada dígito hexadecimal por 16 elevado a la potencia de su posición.</p>
+        <p><strong>Fórmula:</strong> <code>N = Σ(d_i * 16^i)</code></p><br>
+        </div>
+
+        <h2>Ejemplos de Conversión</h2>
+        <h3>Ejemplo 1: Convertir 10 (Decimal) a Binario</h3>
+        <p>Resultado: 10 (Decimal) = 1010 (Binario)</p><br>
+    
+        <h3>Ejemplo 2: Convertir 1010 (Binario) a Decimal</h3>
+        <p>Resultado: 1010 (Binario) = 10 (Decimal)</p><br>
+    
+        <h2>Tabla de Conversión</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Decimal</th>
+                    <th>Binario</th>
+                    <th>Octal</th>
+                    <th>Hexadecimal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+                <tr><td>2</td><td>10</td><td>2</td><td>2</td></tr>
+                <tr><td>3</td><td>11</td><td>3</td><td>3</td></tr>
+                <tr><td>4</td><td>100</td><td>4</td><td>4</td></tr>
+                <tr><td>5</td><td>101</td><td>5</td><td>5</td></tr>
+                <tr><td>6</td><td>110</td><td>6</td><td>6</td></tr>
+                <tr><td>7</td><td>111</td><td>7</td><td>7</td></tr>
+                <tr><td>8</td><td>1000</td><td>10</td><td>8</td></tr>
+                <tr><td>9</td><td>1001</td><td>11</td><td>9</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="tabla.html">Si quieres Ver mas sobre la tabla de los diferentes Sistemas presiona aqui</a>
+<br><br>
+<div class="calculator">
+    <h2>Calculadora de Conversión de Sistemas de Numeración</h2>
+
+    <!-- Selección del sistema inicial -->
+    <label for="inputBase">Selecciona el sistema de origen:</label>
+    <select id="inputBase" onchange="limpiarResultado()">
+        <option value="10">Decimal</option>
+        <option value="2">Binario</option>
+        <option value="8">Octal</option>
+        <option value="16">Hexadecimal</option>
+    </select>
+
+    <!-- Ingreso de valores -->
+    <label for="inputNumber">Ingresa el número en el sistema seleccionado:</label>
+    <input type="text" id="inputNumber" placeholder="Introduce un número" oninput="limpiarResultado()">
+
+    <!-- Selección del sistema de conversión -->
+    <label for="outputBase">Convertir a sistema:</label>
+    <select id="outputBase" onchange="limpiarResultado()">
+        <option value="10">Decimal</option>
+        <option value="2">Binario</option>
+        <option value="8">Octal</option>
+        <option value="16">Hexadecimal</option>
+    </select>
+
+    <!-- Botones de acción -->
+    <div class="buttonGroup">
+        <button onclick="convertir()">Convertir</button>
+        <button onclick="limpiarTodo()">Limpiar</button>
+    </div>
+
+    <!-- Resultados -->
+    <div id="result" class="resultBox"></div>
+
+    <!-- Paso a paso de las operaciones matemáticas -->
+    <div id="stepByStep" style="display:none;">
+        <h3>Paso a paso (Operaciones Matemáticas):</h3>
+        <p id="steps"></p>
+    </div>
+</div>
+
+    <!-- Botón de Ir Arriba -->
+    <button onclick="irArriba()" id="btnIrArriba" title="Ir Arriba">
+        &#8679; <!-- Este es el icono de la flecha hacia arriba -->
+    </button>
+
+<script>
+    function limpiarResultado() {
+        document.getElementById('result').innerHTML = '';
+        document.getElementById('steps').innerHTML = '';
+        document.getElementById('stepByStep').style.display = 'none';
+    }
+
+    function limpiarTodo() {
+        document.getElementById('inputNumber').value = '';
+        document.getElementById('inputBase').value = '10';
+        document.getElementById('outputBase').value = '10';
+        limpiarResultado();
+    }
+
+    function convertir() {
+        const inputNumber = document.getElementById('inputNumber').value.trim().toUpperCase(); // Se permite ingresar letras (A-F para Hexadecimal)
+        const inputBase = parseInt(document.getElementById('inputBase').value);
+        const outputBase = parseInt(document.getElementById('outputBase').value);
+        let result = '';
+        let steps = '';
+
+        if (inputNumber === '') {
+            alert('Por favor, introduce un número válido');
+            return;
+        }
+
+        // Validación del número según el sistema de origen
+        if (!esNumeroValido(inputNumber, inputBase)) {
+            alert(`El número ingresado no es válido en el sistema ${getNombreBase(inputBase)}.`);
+            return;
+        }
+
+        const decimalNumber = parseInt(inputNumber, inputBase); // Convertimos todo a decimal para luego convertirlo a cualquier base
+
+        // Conversión al sistema seleccionado
+        const convertedNumber = decimalNumber.toString(outputBase).toUpperCase();
+        result += `El número en ${getNombreBase(outputBase)} es: ${convertedNumber}<br>`;
+
+        // Mostrar el paso a paso según el sistema de origen y destino
+        steps += `Conversión del número de ${getNombreBase(inputBase)} (${inputNumber}) a ${getNombreBase(outputBase)}:<br>`;
+        steps += mostrarConversion(decimalNumber, outputBase);
+
+        // Mostrar resultados y pasos
+        document.getElementById('result').innerHTML = result;
+        document.getElementById('steps').innerHTML = steps;
+        document.getElementById('stepByStep').style.display = 'block';
+    }
+
+    function esNumeroValido(numero, base) {
+        const patrones = {
+            2: /^[01]+$/,
+            8: /^[0-7]+$/,
+            10: /^[0-9]+$/,
+            16: /^[0-9A-F]+$/
+        };
+        return patrones[base].test(numero);
+    }
+
+    function getNombreBase(base) {
+        const nombres = {
+            2: 'Binario',
+            8: 'Octal',
+            10: 'Decimal',
+            16: 'Hexadecimal'
+        };
+        return nombres[base];
+    }
+
+    function mostrarConversion(numeroDecimal, baseDestino) {
+        let steps = '';
+        let originalNumber = numeroDecimal;
+        const divisiones = [];
+
+        // Realizamos las divisiones sucesivas
+        while (numeroDecimal > 0) {
+            divisiones.push({ cociente: Math.floor(numeroDecimal / baseDestino), resto: numeroDecimal % baseDestino });
+            numeroDecimal = Math.floor(numeroDecimal / baseDestino);
+        }
+
+        divisiones.reverse().forEach((division, index) => {
+            steps += `Paso ${index + 1}: ${originalNumber} ÷ ${baseDestino} = ${division.cociente} (resto: ${division.resto})<br>`;
+            originalNumber = division.cociente;
+        });
+
+        return steps || 'No hay pasos (el número es 0)';
+    }
+
+
+        // Mostrar el botón cuando el usuario se desplaza hacia abajo 20px desde el inicio
+        window.onscroll = function() {mostrarBotonIrArriba()};
+    
+    function mostrarBotonIrArriba() {
+        const boton = document.getElementById("btnIrArriba");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            boton.style.display = "block";
+        } else {
+            boton.style.display = "none";
+        }
+    }
+    
+    // Cuando el usuario hace clic en el botón, lo envía al inicio de la página
+    function irArriba() {
+        document.body.scrollTop = 0; // Para Safari
+        document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera
+    }
+</script>
+
+<section>
+    <h2>Requisitos del Sistema para la Ejecucion Cisco Packet Tracer</h2>
+    <h4>Requisitos Mínimos del Sistema</h4>
+    <ul>
+        <li><strong>RAM:</strong> 2 GB (se recomienda 4 GB para un mejor rendimiento)</li>
+        <li><strong>Espacio en Disco Duro:</strong> 1 GB de espacio disponible</li>
+        <li><strong>Tarjeta Gráfica:</strong> Gráfica compatible con OpenGL 2.1 o superior</li>
+        <li><strong>Conexión a Internet:</strong> Conexión a Internet para la descarga y activación del software; se recomienda una conexión de banda ancha para una experiencia óptima.</li>
+        <li><strong>Sistema Operativo:</strong>
+            <ul>
+                <li>Windows: Windows 10 o superior</li>
+                <li>macOS: macOS 10.13 o superior</li>
+                <li>Linux: Distribuciones basadas en Debian o Red Hat (consultar la documentación para más detalles)</li>
+            </ul>
+        </li>
+    </ul>
+    <h4>Requisitos Recomendados</h4>
+    <ul>
+        <li><strong>RAM:</strong> 4 GB o más</li>
+        <li><strong>Espacio en Disco Duro:</strong> 2 GB o más para permitir la instalación de actualizaciones y almacenamiento adicional.</li>
+        <li><strong>Tarjeta Gráfica:</strong> Gráfica compatible con OpenGL 3.0 o superior.</li>
+        <li><strong>Conexión a Internet:</strong> Conexión de banda ancha para descargar componentes adicionales y actualizaciones.</li>
+    <h2>Cómo Descargar Cisco Packet Tracer</h2>
+    <ol>
+        <li><strong>Requisitos Previos:</strong>
+            <p>Asegúrate de tener un dispositivo compatible. Cisco Packet Tracer está disponible para Windows, macOS y Linux.</p>
+        </li>
+        <li><strong>Crear una Cuenta en Cisco:</strong>
+            <p>Para descargar Cisco Packet Tracer, necesitarás una cuenta en el sitio web de Cisco. Puedes crear una cuenta gratuita si aún no tienes una.</p>
+            <p>Visita el sitio web de Cisco Networking Academy y regístrate.<a href="https://www.netacad.com/" target="_blank">Cisco Networking Academy</a></p>
+        </li>
+        <li><strong>Descarga Cisco Packet Tracer Aqui:</strong>
+            <p>Puedes realizar la descarga en los siguientes link´s de forma segura y profesionalmente esta para Windows - Mac - Linux.</p>
+            <p>Para Windows x64.  <a href="https://drive.google.com/drive/folders/1IAk2hT4F-7mHU3rPtMk9_etcQRTRZO4o?usp=sharing" target="_blank">https://drive.google.com/drive/folders/1IAk2hT4F-7mHU3rPtMk9_etcQRTRZO4o?usp=sharing</a></p>
+            <p>Para Windows x32.  <a href="https://drive.google.com/drive/folders/1IAk2hT4F-7mHU3rPtMk9_etcQRTRZO4o?usp=sharing" target="_blank">https://drive.google.com/drive/folders/1IAk2hT4F-7mHU3rPtMk9_etcQRTRZO4o?usp=sharing</a></p>
+            <p>Para Linux.  <a href="https://drive.google.com/drive/folders/1IAk2hT4F-7mHU3rPtMk9_etcQRTRZO4o?usp=sharing" target="_blank">https://drive.google.com/drive/folders/1IAk2hT4F-7mHU3rPtMk9_etcQRTRZO4o?usp=sharing</a></p>
+            <p>Para Mac.  <a href="https://drive.google.com/drive/folders/1IAk2hT4F-7mHU3rPtMk9_etcQRTRZO4o?usp=sharing/" target="_blank">https://drive.google.com/drive/folders/1IAk2hT4F-7mHU3rPtMk9_etcQRTRZO4o?usp=sharing</a></p>
+        </li>
+        <li><strong>Instalar Cisco Packet Tracer:</strong>
+            <p>Una vez que la descarga esté completa, localiza el archivo y ábrelo para iniciar el proceso de instalación.</p>
+            <p>Sigue las instrucciones en pantalla para completar la instalación.</p>
+        </li>
+        <li><strong>Iniciar Cisco Packet Tracer:</strong>
+            <p>Después de la instalación, abre Cisco Packet Tracer desde tu menú de aplicaciones o escritorio.</p>
+            <p>Inicia sesión con tus credenciales de Cisco Networking Academy para acceder a todas las funciones.</p>
+        </li>
+
+        <section id="img" style="margin-top: 40px;">
+            <h2 style="text-align: center;">Ingreso a Cisco Packet Tracer</h2>
+            <div class="img-container">
+                <!-- img 1 -->
+                <div class="img-item">
+                    <h3>Proceso 1</h3>
+                    <img src="../Desktop/Inicio Cisco1.png" ></img>
+                    <p>Al abrir y configurar Cisco Packet Tracer saldra la siguiente Imagen, elegir la Opcion Networking Academy.</p>
+                </div>
+                <!-- img 2 -->
+                <div class="img-item">
+                    <h3>Proceso 2</h3>
+                    <img src="../Desktop/Ingreso Cisco2.png" ></img>
+                    <p>Ingresa el Correo y Contraseña registrado previamente en la cuenta Networking Academy en Google.</p>
+                </div>
+            </div>
+            <div class="img-row">
+                <!-- img 3 -->
+                <div class="img-item">
+                    <h3>Proceso 3</h3>
+                    <img src="../Desktop/Pantalla Cisco3.png" ></img>
+                    <p>Al realizar el Login exitoso te mostrara la siguiente imagen.</p>
+                </div>
+        </ol>
+    <br>
+    </ul>
+    <h3>Recursos Adicionales</h3>
+    <ul>
+        <li><strong>Comunidad:</strong> Puedes unirte a foros y comunidades en línea donde otros usuarios comparten consejos, trucos y experiencias sobre el uso de Cisco Packet Tracer.</li>
+    </ul>
+    <h3>Conclusión</h3>
+    <p>Cisco Packet Tracer es una herramienta poderosa para aprender sobre redes y es especialmente útil para aquellos que buscan obtener certificaciones de Cisco. Siguiendo los pasos anteriores, podrás descargar e instalar Packet Tracer y comenzar a practicar la creación y simulación de redes.</p>
+</section>
+
+ 
+
+</body>
+</html>

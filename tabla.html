@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Caracteres</title>
+    <style>
+        body {
+            font-family: Times New Roman, sans-serif;
+            background-color: #f4f4f4;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #1e73be;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #c6c2c1;
+        }
+        
+        thead {
+            background-color: #1e73be;
+            color: white;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tbody tr:nth-child(odd) {
+            background-color: #ddd;
+        }
+        
+        tbody tr:hover {
+            background-color: #d1e7ff;
+        }
+        .nav-links {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1.1em;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-links a:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Estilos para el botón de Ir Arriba */
+#btnIrArriba {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    background-color: #1e73be;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#btnIrArriba:hover {
+    background-color: #155a9a;
+}
+
+/* Ocultar el botón inicialmente */
+#btnIrArriba {
+    display: none;
+}
+
+    </style>        
+
+</head>
+<div class="nav-links">
+<a href="index.html">Ir a la Pagina Principal</a>
+</div>
+<body>
+    <h1>Tabla de Conversión de Caracteres</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Caracter</th>
+                <th>Binario</th>
+                <th>Decimal</th>
+                <th>Octal</th>
+                <th>Hexadecimal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <thead>
+                <tr>
+                    <td colspan="5" style="text-align: center; font-weight: bold;">
+                        Numeros 
+                    </td>
+                </tr>
+                </thead>    
+            <!-- Números -->
+            <tr><td>0</td><td>00110000</td><td>48</td><td>60</td><td>30</td></tr>
+            <tr><td>1</td><td>00110001</td><td>49</td><td>61</td><td>31</td></tr>
+            <tr><td>2</td><td>00110010</td><td>50</td><td>62</td><td>32</td></tr>
+            <tr><td>3</td><td>00110011</td><td>51</td><td>63</td><td>33</td></tr>
+            <tr><td>4</td><td>00110100</td><td>52</td><td>64</td><td>34</td></tr>
+            <tr><td>5</td><td>00110101</td><td>53</td><td>65</td><td>35</td></tr>
+            <tr><td>6</td><td>00110110</td><td>54</td><td>66</td><td>36</td></tr>
+            <tr><td>7</td><td>00110111</td><td>55</td><td>67</td><td>37</td></tr>
+            <tr><td>8</td><td>00111000</td><td>56</td><td>70</td><td>38</td></tr>
+
+            <thead>
+                <tr>
+                    <td colspan="5" style="text-align: center; font-weight: bold;">
+                        MAYUSCULAS
+                    </td>
+                </tr>
+                </thead>
+                <!-- Letras mayúsculas -->
+            <tr><td>A</td><td>01000001</td><td>65</td><td>101</td><td>41</td></tr>
+            <tr><td>B</td><td>01000010</td><td>66</td><td>102</td><td>42</td></tr>
+            <tr><td>C</td><td>01000011</td><td>67</td><td>103</td><td>43</td></tr>
+            <tr><td>D</td><td>01000100</td><td>68</td><td>104</td><td>44</td></tr>
+            <tr><td>E</td><td>01000101</td><td>69</td><td>105</td><td>45</td></tr>
+            <tr><td>F</td><td>01000110</td><td>70</td><td>106</td><td>46</td></tr>
+            <tr><td>G</td><td>01000111</td><td>71</td><td>107</td><td>47</td></tr>
+            <tr><td>H</td><td>01001000</td><td>72</td><td>110</td><td>48</td></tr>
+            <tr><td>I</td><td>01001001</td><td>73</td><td>111</td><td>49</td></tr>
+            <tr><td>J</td><td>01001010</td><td>74</td><td>112</td><td>4A</td></tr>
+            <tr><td>K</td><td>01001011</td><td>75</td><td>113</td><td>4B</td></tr>
+            <tr><td>L</td><td>01001100</td><td>76</td><td>114</td><td>4C</td></tr>
+            <tr><td>M</td><td>01001101</td><td>77</td><td>115</td><td>4D</td></tr>
+            <tr><td>N</td><td>01001110</td><td>78</td><td>116</td><td>4E</td></tr>
+            <tr><td>O</td><td>01001111</td><td>79</td><td>117</td><td>4F</td></tr>
+            <tr><td>P</td><td>01010000</td><td>80</td><td>120</td><td>50</td></tr>
+            <tr><td>Q</td><td>01010001</td><td>81</td><td>121</td><td>51</td></tr>
+            <tr><td>R</td><td>01010010</td><td>82</td><td>122</td><td>52</td></tr>
+            <tr><td>S</td><td>01010011</td><td>83</td><td>123</td><td>53</td></tr>
+            <tr><td>T</td><td>01010100</td><td>84</td><td>124</td><td>54</td></tr>
+            <tr><td>U</td><td>01010101</td><td>85</td><td>125</td><td>55</td></tr>
+            <tr><td>V</td><td>01010110</td><td>86</td><td>126</td><td>56</td></tr>
+            <tr><td>W</td><td>01010111</td><td>87</td><td>127</td><td>57</td></tr>
+            <tr><td>X</td><td>01011000</td><td>88</td><td>130</td><td>58</td></tr>
+            <tr><td>Y</td><td>01011001</td><td>89</td><td>131</td><td>59</td></tr>
+            <tr><td>Z</td><td>01011010</td><td>90</td><td>132</td><td>5A</td></tr>
+
+            <thead>
+            <tr>
+                <td colspan="5" style="text-align: center; font-weight: bold;">
+                    minusculas
+                </td>
+            </tr>
+            </thead>
+            <!-- Letras minúsculas -->
+            <tr><td>a</td><td>01100001</td><td>97</td><td>141</td><td>61</td></tr>
+            <tr><td>b</td><td>01100010</td><td>98</td><td>142</td><td>62</td></tr>
+            <tr><td>c</td><td>01100011</td><td>99</td><td>143</td><td>63</td></tr>
+            <tr><td>d</td><td>01100100</td><td>100</td><td>144</td><td>64</td></tr>
+            <tr><td>e</td><td>01100101</td><td>101</td><td>145</td><td>65</td></tr>
+            <tr><td>f</td><td>01100110</td><td>102</td><td>146</td><td>66</td></tr>
+            <tr><td>g</td><td>01100111</td><td>103</td><td>147</td><td>67</td></tr>
+            <tr><td>h</td><td>01101000</td><td>104</td><td>150</td><td>68</td></tr>
+            <tr><td>i</td><td>01101001</td><td>105</td><td>151</td><td>69</td></tr>
+            <tr><td>j</td><td>01101010</td><td>106</td><td>152</td><td>6A</td></tr>
+            <tr><td>k</td><td>01101011</td><td>107</td><td>153</td><td>6B</td></tr>
+            <tr><td>l</td><td>01101100</td><td>108</td><td>154</td><td>6C</td></tr>
+            <tr><td>m</td><td>01101101</td><td>109</td><td>155</td><td>6D</td></tr>
+            <tr><td>n</td><td>01101110</td><td>110</td><td>156</td><td>6E</td></tr>
+            <tr><td>o</td><td>01101111</td><td>111</td><td>157</td><td>6F</td></tr>
+            <tr><td>p</td><td>01110000</td><td>112</td><td>160</td><td>70</td></tr>
+            <tr><td>q</td><td>01110001</td><td>113</td><td>161</td><td>71</td></tr>
+            <tr><td>r</td><td>01110010</td><td>114</td><td>162</td><td>72</td></tr>
+            <tr><td>s</td><td>01110011</td><td>115</td><td>163</td><td>73</td></tr>
+            <tr><td>t</td><td>01110100</td><td>116</td><td>164</td><td>74</td></tr>
+            <tr><td>u</td><td>01110101</td><td>117</td><td>165</td><td>75</td></tr>
+            <tr><td>v</td><td>01110110</td><td>118</td><td>166</td><td>76</td></tr>
+            <tr><td>w</td><td>01110111</td><td>119</td><td>167</td><td>77</td></tr>
+            <tr><td>x</td><td>01111000</td><td>120</td><td>170</td><td>78</td></tr>
+            <tr><td>y</td><td>01111001</td><td>121</td><td>171</td><td>79</td></tr>
+            <tr><td>z</td><td>01111010</td><td>122</td><td>172</td><td>7A</td></tr>
+
+            <thead>
+                <tr>
+                    <td colspan="5" style="text-align: center; font-weight: bold;">
+                        Simbolos y Signos
+                    </td>
+                </tr>
+                </thead>
+                <!-- Símbolos -->
+            <tr><td>!</td><td>00100001</td><td>33</td><td>41</td><td>21</td></tr>
+            <tr><td>@</td><td>01000000</td><td>64</td><td>100</td><td>40</td></tr>
+            <tr><td>#</td><td>00100011</td><td>35</td><td>43</td><td>23</td></tr>
+            <tr><td>$</td><td>00100100</td><td>36</td><td>44</td><td>24</td></tr>
+            <tr><td>%</td><td>00100101</td><td>37</td><td>45</td><td>25</td></tr>
+            <tr><td>^</td><td>01011110</td><td>94</td><td>136</td><td>5E</td></tr>
+            <tr><td>&</td><td>00100110</td><td>38</td><td>46</td><td>26</td></tr>
+            <tr><td>*</td><td>00101010</td><td>42</td><td>52</td><td>2A</td></tr>
+            <tr><td>(</td><td>00101000</td><td>40</td><td>50</td><td>28</td></tr>
+            <tr><td>)</td><td>00101001</td><td>41</td><td>51</td><td>29</td></tr>
+            <tr><td>-</td><td>00101101</td><td>45</td><td>55</td><td>2D</td></tr>
+            <tr><td>=</td><td>00111101</td><td>61</td><td>75</td><td>3D</td></tr>
+            <tr><td>+</td><td>00101011</td><td>43</td><td>53</td><td>2B</td></tr>
+            <tr><td>?</td><td>00111111</td><td>63</td><td>77</td><td>3F</td></tr>
+            <tr><td>/</td><td>00101111</td><td>47</td><td>57</td><td>2F</td></tr>
+        </tbody>
+    </table>
+
+    <!-- Botón de Ir Arriba -->
+<button onclick="irArriba()" id="btnIrArriba" title="Ir Arriba">
+    &#8679; <!-- Este es el icono de la flecha hacia arriba -->
+</button>
+
+    <script>
+        // Seleccionamos todas las celdas (td) de la tabla
+let celdas = document.querySelectorAll("td");
+
+// Iteramos sobre todas las celdas para agregarles eventos
+celdas.forEach(function(celda) {
+    // Evento cuando el mouse entra en la celda
+    celda.addEventListener("mouseover", function() {
+        celda.style.transform = "scale(1.5)"; // Aumenta el tamaño de la celda
+        celda.style.transition = "transform 0.3s ease"; // Transición suave
+    });
+
+    // Evento cuando el mouse sale de la celda
+    celda.addEventListener("mouseout", function() {
+        celda.style.transform = "scale(1)"; // Vuelve al tamaño original
+    });
+});
+
+
+
+    // Mostrar el botón cuando el usuario se desplaza hacia abajo 20px desde el inicio
+    window.onscroll = function() {mostrarBotonIrArriba()};
+    
+    function mostrarBotonIrArriba() {
+        const boton = document.getElementById("btnIrArriba");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            boton.style.display = "block";
+        } else {
+            boton.style.display = "none";
+        }
+    }
+    
+    // Cuando el usuario hace clic en el botón, lo envía al inicio de la página
+    function irArriba() {
+        document.body.scrollTop = 0; // Para Safari
+        document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera
+    }
+    </script>    
+</body>
+</html>
