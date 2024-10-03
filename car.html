@@ -567,27 +567,7 @@ h3, h4 {
 </footer>
 
 <script>
-    // Definir el precio del producto
-    const precioProducto = 30000; // Aquí defines el valor del producto
-
-    // Función para calcular el IVA
-    function calcularIVA(precio, porcentajeIVA) {
-        return precio * (porcentajeIVA / 100);
-    }
-
-    // Actualizar los valores de IVA
-    function actualizarIVA() {
-        const porcentajeIVA = 19; // IVA del 19%
-        const valorIVA = calcularIVA(precioProducto, porcentajeIVA);
-
-        // Actualizar el DOM con los valores calculados
-        document.getElementById('iva-amount').textContent = valorIVA.toLocaleString(); // Mostrar el IVA
-    }
-
-    // Llamar a la función para actualizar los precios cuando cargue la página
-    actualizarIVA();
-
-    // Carrito de compras
+ // Carrito de compras
     let cart = [];
 
     // Función para agregar productos al carrito
